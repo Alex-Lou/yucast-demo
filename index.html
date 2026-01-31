@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yucast - Kafka Flow Visualizer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/theme.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Yucast - The modern way to monitor, manage, and understand your Kafka infrastructure. Beautiful visualizations, real-time insights, zero complexity.">
+    <meta name="keywords" content="Kafka, visualizer, monitoring, streaming, Apache Kafka, dashboard">
+</head>
+<body class="page-body">
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast fixed top-6 right-6 z-[100] px-6 py-4 rounded-xl shadow-2xl hidden">
+        <div class="flex items-center gap-3">
+            <span id="toast-icon"></span>
+            <span id="toast-message" class="font-medium"></span>
+        </div>
+    </div>
+
+    <!-- =============================================
+         ANIMATED BACKGROUND
+         ============================================= -->
+    <div class="background-container">
+        <div class="background-overlay"></div>
+        <div class="background-glow glow-purple"></div>
+        <div class="background-glow glow-cyan"></div>
+        <div class="background-glow glow-indigo"></div>
+        <div class="grid-overlay grid-pattern"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="fixed inset-0 -z-5 pointer-events-none overflow-hidden">
+        <div class="absolute w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-60 animate-float particle-1"></div>
+        <div class="absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 animate-float" style="left: 85%; top: 15%; animation-delay: 0.5s;"></div>
+        <div class="absolute w-4 h-4 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-40 animate-float" style="left: 75%; top: 75%; animation-delay: 1s;"></div>
+        <div class="absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 animate-float" style="left: 15%; top: 70%; animation-delay: 1.5s;"></div>
+        <div class="absolute w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-40 animate-float" style="left: 5%; top: 45%; animation-delay: 1.2s;"></div>
+    </div>
+
+    <!-- =============================================
+         NAVIGATION
+         ============================================= -->
+    <nav id="navbar" class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">
+                    <span class="text-white font-black text-lg">Y</span>
+                </div>
+                <span class="logo-text">Yucast</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#demo" class="nav-link">Schema</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="cta-button btn-glow">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =============================================
+         HERO SECTION
+         ============================================= -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge glass animate-fade-in-up">
+                <span class="status-dot-container">
+                    <span class="status-dot-ping"></span>
+                    <span class="status-dot"></span>
+                </span>
+                <span class="status-text">v2.0 — Now with real-time metrics</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="hero-title animate-fade-in-up delay-100">
+                Visualize Your
+                <span class="block text-gradient">Kafka Flows</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-subtitle animate-fade-in-up delay-200">
+                The modern way to monitor, manage, and understand your Kafka infrastructure. 
+                Beautiful visualizations, real-time insights, zero complexity.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="cta-container animate-fade-in-up delay-300">
+                <a href="#contact" class="main-cta btn-glow">
+                    <span class="flex items-center gap-2">Get Started</span>
+                </a>
+                <a href="pricing.html" class="secondary-cta">
+                    <span class="flex items-center gap-2">
+                        View Pricing
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Flow Preview Demo -->
+            <div class="demo-container">
+                <div id="demo" class="demo-box">
+                    <svg class="w-full h-full" viewBox="0 0 800 400">
+                        <!-- Definitions -->
+                        <defs>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.8"/>
+                            </linearGradient>
+                            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#ec4899" stop-opacity="0.8"/>
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Animated Lines -->
+                        <g filter="url(#glow)">
+                            <path d="M 100 200 Q 250 100 400 200 T 700 200" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash"/>
+                            <path d="M 100 150 Q 300 250 500 150 T 700 180" fill="none" stroke="url(#lineGradient2)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-500"/>
+                            <path d="M 100 280 Q 200 180 400 280 T 700 250" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-1000"/>
+                        </g>
+                        
+                        <!-- Nodes -->
+                        <g>
+                            <!-- Producer -->
+                            <rect x="60" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
+                            <text x="100" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">Producer</text>
+                            
+                            <!-- Kafka Cluster -->
+                            <rect x="320" y="140" width="160" height="120" rx="16" fill="#1a1a24" stroke="#a855f7" stroke-width="2"/>
+                            <text x="400" y="180" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Kafka Cluster</text>
+                            <text x="400" y="200" text-anchor="middle" fill="#666" font-size="10">3 brokers • 12 topics</text>
+                            <text x="400" y="220" text-anchor="middle" fill="#22d3ee" font-size="10">● Active</text>
+                            
+                            <!-- Consumer -->
+                            <rect x="660" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
+                            <text x="700" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">Consumer</text>
+                        </g>
+                        
+                        <!-- Animated Particles -->
+                        <circle r="4" fill="#22d3ee" filter="url(#glow)">
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M 100 200 Q 250 100 400 200 T 700 200"/>
+                        </circle>
+                        <circle r="4" fill="#a855f7" filter="url(#glow)">
+                            <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M 100 150 Q 300 250 500 150 T 700 180"/>
+                        </circle>
+                        <circle r="4" fill="#ec4899" filter="url(#glow)">
+                            <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M 100 280 Q 200 180 400 280 T 700 250"/>
+                        </circle>
+                    </svg>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         FEATURES SECTION
+         ============================================= -->
+    <section id="features" class="features-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Everything you need to
+                    <span class="text-gradient">master Kafka</span>
+                </h2>
+                <p class="section-subtitle">
+                    Powerful features designed for developers who want clarity and control over their event streams.
+                </p>
+            </div>
+            <div id="features-grid" class="features-grid">
+                <!-- Dynamically rendered by content.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         ARCHITECTURE SECTION
+         ============================================= -->
+    <section id="architecture" class="architecture-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Modern
+                    <span class="text-gradient">Architecture</span>
+                </h2>
+                <p class="section-subtitle">
+                    Built with industry-standard technologies for reliability and performance.
+                </p>
+            </div>
+            <div id="architecture-grid" class="architecture-grid">
+                <!-- Dynamically rendered by content.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         CONTACT SECTION (Hidden by default)
+         ============================================= -->
+    <section id="contact" class="contact-section hidden-section">
+        <div class="contact-form-container">
+            <h2 class="section-title text-center mb-12">
+                Get in <span class="text-gradient">Touch</span>
+            </h2>
+            <form id="contact-form" class="contact-form glass">
+                <input 
+                    type="text" 
+                    name="from_name" 
+                    required 
+                    placeholder="Your Name" 
+                    class="form-input input-focus"
+                >
+                <input 
+                    type="email" 
+                    name="from_email" 
+                    required 
+                    placeholder="Your Email" 
+                    class="form-input input-focus"
+                >
+                <textarea 
+                    name="message" 
+                    required 
+                    placeholder="Your Message..." 
+                    rows="4" 
+                    class="form-input input-focus"
+                ></textarea>
+                <button type="submit" id="submit-btn" class="submit-button btn-glow">
+                    <span id="btn-text">Send Message</span>
+                    <span id="btn-loading" class="hidden">
+                        <svg class="animate-spin h-5 w-5 mx-auto" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- =============================================
+         FOOTER
+         ============================================= -->
+    <footer class="footer">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="footer-text">© 2026 Yucast. Built with ☕ and ❤️ by Cyber Wuruhi.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy</a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms</a>
+                <a href="pricing.html" class="text-gray-500 hover:text-white transition-colors text-sm">Pricing</a>
+                <a href="#contact" class="text-gray-500 hover:text-white transition-colors text-sm">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =============================================
+         SCRIPTS
+         ============================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/content.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
