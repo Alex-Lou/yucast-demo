@@ -209,8 +209,13 @@ async function handleFormSubmit(e) {
 
 function setupContactReveal() {
     const contactSection = document.getElementById('contact');
+    
+    // Si la section n'existe pas (ex: on est sur la page pricing), on ne fait rien.
+    // Le lien naviguera naturellement vers index.html#contact
     if (!contactSection) return;
 
+    // 1. GESTION AU CHARGEMENT DE LA PAGE
+    // (Cas où l'utilisateur vient de pricing.html vers index.html#contact)
     const urlParams = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
@@ -219,17 +224,19 @@ function setupContactReveal() {
         contactSection.classList.add('visible');
         setTimeout(() => {
             contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            if (urlParams.get('showContact')) {
-                window.history.replaceState({}, '', window.location.pathname + '#contact');
+            if (hash === '#contact') {
+                history.replaceState(null, null, ' '); 
             }
         }, 100);
     }
 
-    document.querySelectorAll('a[href="#contact"]').forEach(link => {
+    document.querySelectorAll('a[href$="#contact"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            
             contactSection.classList.remove('hidden-section');
             contactSection.classList.add('visible');
+            
             setTimeout(() => {
                 contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 50);
