@@ -9,9 +9,11 @@ Modern landing page for Yucast - Kafka Flow Visualizer.
 - Live metrics via WebSocket
 - Orphan topic cleanup
 - Nice dark theme UI
+- **i18n Support**: Content available in multiple languages.
 
 ## 📁 Project Structure
 
+```
 yucast/
 ├── index.html              # Homepage
 ├── pricing.html            # Pricing page
@@ -21,14 +23,21 @@ yucast/
 │       └── logo.png        # Logo
 │
 ├── css/
-│   └── style.css           # Main stylesheet
+│   ├── style.css           # Main stylesheet
+│   └── responsive.css      # Responsive styles
 │
 ├── js/
-│   ├── theme.js            # Tailwind config
+│   ├── i18n.js             # Internationalization
 │   │
 │   ├── core/
 │   │   ├── hydrate.js      # Style token hydration
 │   │   └── utils.js        # Shared utilities
+│   │
+│   ├── components/
+│   │   ├── background.js   # Animated background
+│   │   ├── navbar.js       # Navbar logic
+│   │   ├── footer.js       # Footer logic
+│   │   └── lang-dropdown.js # Language dropdown
 │   │
 │   ├── styles/
 │   │   ├── shared.js       # Shared style tokens
@@ -39,7 +48,10 @@ yucast/
 │       ├── index.js        # Index page logic
 │       └── pricing.js      # Pricing page logic
 │
-└── .gitignore
+├── .gitignore              # Git ignore file
+├── package.json            # Project dependencies
+└── package-lock.json       # Dependency lock file
+```
 
 ## 🛠️ Tech Stack
 
@@ -52,14 +64,22 @@ yucast/
 
 This project uses a token-based styling system:
 
-1. HTML uses `[TOKEN]` placeholders: `class="[NAVBAR]"`
-2. JS defines tokens: `NAVBAR: "navbar"`
-3. Hydration replaces tokens at runtime
+1.  HTML uses `[TOKEN]` placeholders: `class="[NAVBAR]"`
+2.  JS defines tokens: `NAVBAR: "navbar"`
+3.  Hydration replaces tokens at runtime
 
 Benefits:
 - Clean HTML
 - Centralized style management
 - Easy theming
+
+## 🌐 Internationalization (i18n)
+
+The project uses a simple JSON-based i18n system located in `js/i18n.js`.
+
+- **Adding Languages**: Add new language objects to the `translations` dictionary.
+- **Changing Language**: The `changeLanguage(lang)` function updates the content.
+- **UI**: The language dropdown component in `js/components/lang-dropdown.js` handles user interaction.
 
 ## 📧 Contact Form
 
@@ -72,7 +92,6 @@ const EMAILJS_CONFIG = {
     templateId: 'YOUR_TEMPLATE_ID'
 };
 ```
-
 
 ## 📝 License
 
