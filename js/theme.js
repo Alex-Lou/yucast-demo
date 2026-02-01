@@ -1,3 +1,6 @@
+// js/theme.js
+// Tailwind CSS Configuration for CDN usage
+
 tailwind.config = {
     theme: {
         extend: {
@@ -10,18 +13,9 @@ tailwind.config = {
                     pink: '#ec4899',
                 }
             },
-            animation: {
-                'float': 'float 6s ease-in-out infinite',
-                'dash': 'dash 3s linear infinite',
-                'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
-                'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-                'pulse-ring': 'pulse-ring 2s ease-out infinite',
-                'gradient': 'gradient-shift 8s ease infinite',
-                'spin': 'spin 1s linear infinite',
-            },
             fontFamily: {
                 'inter': ['Inter', 'sans-serif'],
             }
         }
     }
-}
+};

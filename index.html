@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yucast - Kafka Flow Visualizer</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/theme.js"></script>
     
@@ -14,99 +14,90 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     
-    <!-- Meta tags for SEO -->
-    <meta name="description" content="Yucast - The modern way to monitor, manage, and understand your Kafka infrastructure. Beautiful visualizations, real-time insights, zero complexity.">
+    <!-- Meta SEO -->
+    <meta name="description" content="Yucast - The modern way to monitor, manage, and understand your Kafka infrastructure.">
     <meta name="keywords" content="Kafka, visualizer, monitoring, streaming, Apache Kafka, dashboard">
 </head>
-<body class="page-body">
+<body class="[PAGE_BODY]">
     
     <!-- Toast Notification -->
-    <div id="toast" class="toast fixed top-6 right-6 z-[100] px-6 py-4 rounded-xl shadow-2xl hidden">
-        <div class="flex items-center gap-3">
+    <div id="toast" class="[TOAST_CONTAINER]">
+        <div class="[TOAST_CONTENT]">
             <span id="toast-icon"></span>
-            <span id="toast-message" class="font-medium"></span>
+            <span id="toast-message" class="[TOAST_MESSAGE]"></span>
         </div>
     </div>
 
-    <!-- =============================================
-         ANIMATED BACKGROUND
-         ============================================= -->
-    <div class="background-container">
-        <div class="background-overlay"></div>
-        <div class="background-glow glow-purple"></div>
-        <div class="background-glow glow-cyan"></div>
-        <div class="background-glow glow-indigo"></div>
-        <div class="grid-overlay grid-pattern"></div>
+    <!-- Background -->
+    <div class="[BG_CONTAINER]">
+        <div class="[BG_OVERLAY]"></div>
+        <div class="[BG_GLOW_PURPLE]"></div>
+        <div class="[BG_GLOW_CYAN]"></div>
+        <div class="[BG_GLOW_INDIGO]"></div>
+        <div class="[GRID_OVERLAY]"></div>
     </div>
     
-    <!-- Floating Particles -->
-    <div class="fixed inset-0 -z-5 pointer-events-none overflow-hidden">
-        <div class="absolute w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-60 animate-float particle-1"></div>
-        <div class="absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 animate-float" style="left: 85%; top: 15%; animation-delay: 0.5s;"></div>
-        <div class="absolute w-4 h-4 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-40 animate-float" style="left: 75%; top: 75%; animation-delay: 1s;"></div>
-        <div class="absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 animate-float" style="left: 15%; top: 70%; animation-delay: 1.5s;"></div>
-        <div class="absolute w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 opacity-40 animate-float" style="left: 5%; top: 45%; animation-delay: 1.2s;"></div>
+    <!-- Particles -->
+    <div class="[PARTICLES_CONTAINER]">
+        <div class="[PARTICLE_MD] particle-1"></div>
+        <div class="[PARTICLE_SM]" style="left: 85%; top: 15%; animation-delay: 0.5s;"></div>
+        <div class="[PARTICLE_LG]" style="left: 75%; top: 75%; animation-delay: 1s;"></div>
+        <div class="[PARTICLE_SM]" style="left: 15%; top: 70%; animation-delay: 1.5s;"></div>
+        <div class="[PARTICLE_MD]" style="left: 5%; top: 45%; animation-delay: 1.2s;"></div>
     </div>
 
-    <!-- =============================================
-         NAVIGATION
-         ============================================= -->
-    <nav id="navbar" class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo-icon">
-                    <span class="text-white font-black text-lg">Y</span>
+    <!-- Navigation -->
+    <nav id="navbar" class="[NAVBAR]">
+        <div class="[NAVBAR_CONTAINER]">
+            <a href="index.html" class="[LOGO_CONTAINER]">
+                <div class="[LOGO_ICON]">
+                    <img src="assets/images/logo.png" alt="Yucast Logo" class="logo-img">
                 </div>
-                <span class="logo-text">Yucast</span>
+                <span class="[LOGO_TEXT]">Yucast</span>
             </a>
             
-            <div class="nav-links">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#demo" class="nav-link">Schema</a>
-                <a href="#architecture" class="nav-link">Architecture</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="#contact" class="nav-link">Contact</a>
+            <div class="[NAV_LINKS]">
+                <a href="#features" class="[NAV_LINK]">Features</a>
+                <a href="#demo" class="[NAV_LINK]">Schema</a>
+                <a href="#architecture" class="[NAV_LINK]">Architecture</a>
+                <a href="pricing.html" class="[NAV_LINK]">Pricing</a>
+                <a href="#contact" class="[NAV_LINK]">Contact</a>
             </div>
             
-            <div class="flex items-center gap-4">
-                <a href="#contact" class="cta-button btn-glow">Get in Touch</a>
+            <div class="[FLEX_GAP_4]">
+                <a href="#contact" class="[CTA_BUTTON]">Get in Touch</a>
             </div>
         </div>
     </nav>
 
-    <!-- =============================================
-         HERO SECTION
-         ============================================= -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <!-- Status Badge -->
-            <div class="status-badge glass animate-fade-in-up">
-                <span class="status-dot-container">
-                    <span class="status-dot-ping"></span>
-                    <span class="status-dot"></span>
+    <!-- Hero Section -->
+    <section class="[HERO_SECTION]">
+        <div class="[HERO_CONTENT]">
+            <div class="[STATUS_BADGE]">
+                <span class="[STATUS_DOT_CONTAINER]">
+                    <span class="[STATUS_DOT_PING]"></span>
+                    <span class="[STATUS_DOT]"></span>
                 </span>
-                <span class="status-text">v2.0 — Now with real-time metrics</span>
+                <span class="[STATUS_TEXT]">v2.0 — Now with real-time metrics</span>
             </div>
 
-            <!-- Main Title -->
-            <h1 class="hero-title animate-fade-in-up delay-100">
+            <h1 class="[HERO_TITLE]">
                 Visualize Your
-                <span class="block text-gradient">Kafka Flows</span>
+                <span class="[HERO_TITLE_GRADIENT]">Kafka Flows</span>
             </h1>
 
-            <!-- Subtitle -->
-            <p class="hero-subtitle animate-fade-in-up delay-200">
+            <p class="[HERO_SUBTITLE]">
                 The modern way to monitor, manage, and understand your Kafka infrastructure. 
                 Beautiful visualizations, real-time insights, zero complexity.
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="cta-container animate-fade-in-up delay-300">
-                <a href="#contact" class="main-cta btn-glow">
+            <div class="[CTA_CONTAINER]">
+                <a href="#contact" class="[MAIN_CTA]">
                     <span class="flex items-center gap-2">Get Started</span>
                 </a>
-                <a href="pricing.html" class="secondary-cta">
+                <a href="pricing.html" class="[SECONDARY_CTA]">
                     <span class="flex items-center gap-2">
                         View Pricing
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,11 +107,10 @@
                 </a>
             </div>
 
-            <!-- Flow Preview Demo -->
-            <div class="demo-container">
-                <div id="demo" class="demo-box">
+            <!-- Demo Preview -->
+            <div class="[DEMO_CONTAINER]">
+                <div id="demo" class="[DEMO_BOX]">
                     <svg class="w-full h-full" viewBox="0 0 800 400">
-                        <!-- Definitions -->
                         <defs>
                             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
@@ -139,31 +129,25 @@
                             </filter>
                         </defs>
                         
-                        <!-- Animated Lines -->
                         <g filter="url(#glow)">
                             <path d="M 100 200 Q 250 100 400 200 T 700 200" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash"/>
                             <path d="M 100 150 Q 300 250 500 150 T 700 180" fill="none" stroke="url(#lineGradient2)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-500"/>
                             <path d="M 100 280 Q 200 180 400 280 T 700 250" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-1000"/>
                         </g>
                         
-                        <!-- Nodes -->
                         <g>
-                            <!-- Producer -->
                             <rect x="60" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
                             <text x="100" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">Producer</text>
                             
-                            <!-- Kafka Cluster -->
                             <rect x="320" y="140" width="160" height="120" rx="16" fill="#1a1a24" stroke="#a855f7" stroke-width="2"/>
                             <text x="400" y="180" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Kafka Cluster</text>
                             <text x="400" y="200" text-anchor="middle" fill="#666" font-size="10">3 brokers • 12 topics</text>
                             <text x="400" y="220" text-anchor="middle" fill="#22d3ee" font-size="10">● Active</text>
                             
-                            <!-- Consumer -->
                             <rect x="660" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
                             <text x="700" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">Consumer</text>
                         </g>
                         
-                        <!-- Animated Particles -->
                         <circle r="4" fill="#22d3ee" filter="url(#glow)">
                             <animateMotion dur="3s" repeatCount="indefinite" path="M 100 200 Q 250 100 400 200 T 700 200"/>
                         </circle>
@@ -174,83 +158,59 @@
                             <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M 100 280 Q 200 180 400 280 T 700 250"/>
                         </circle>
                     </svg>
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent"></div>
+                    <div class="[DEMO_GRADIENT]"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =============================================
-         FEATURES SECTION
-         ============================================= -->
-    <section id="features" class="features-section">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-header">
-                <h2 class="section-title">
+    <!-- Features Section -->
+    <section id="features" class="[FEATURES_SECTION]">
+        <div class="[CONTAINER_LG]">
+            <div class="[SECTION_HEADER]">
+                <h2 class="[SECTION_TITLE]">
                     Everything you need to
-                    <span class="text-gradient">master Kafka</span>
+                    <span class="[TEXT_GRADIENT]">master Kafka</span>
                 </h2>
-                <p class="section-subtitle">
+                <p class="[SECTION_SUBTITLE]">
                     Powerful features designed for developers who want clarity and control over their event streams.
                 </p>
             </div>
-            <div id="features-grid" class="features-grid">
-                <!-- Dynamically rendered by content.js -->
+            <div id="features-grid" class="[FEATURES_GRID]">
+                <!-- Rendered by JS -->
             </div>
         </div>
     </section>
 
-    <!-- =============================================
-         ARCHITECTURE SECTION
-         ============================================= -->
-    <section id="architecture" class="architecture-section">
-        <div class="max-w-6xl mx-auto">
-            <div class="section-header">
-                <h2 class="section-title">
+    <!-- Architecture Section -->
+    <section id="architecture" class="[ARCHITECTURE_SECTION]">
+        <div class="[CONTAINER_LG]">
+            <div class="[SECTION_HEADER]">
+                <h2 class="[SECTION_TITLE]">
                     Modern
-                    <span class="text-gradient">Architecture</span>
+                    <span class="[TEXT_GRADIENT]">Architecture</span>
                 </h2>
-                <p class="section-subtitle">
+                <p class="[SECTION_SUBTITLE]">
                     Built with industry-standard technologies for reliability and performance.
                 </p>
             </div>
-            <div id="architecture-grid" class="architecture-grid">
-                <!-- Dynamically rendered by content.js -->
+            <div id="architecture-grid" class="[ARCHITECTURE_GRID]">
+                <!-- Rendered by JS -->
             </div>
         </div>
     </section>
 
-    <!-- =============================================
-         CONTACT SECTION (Hidden by default)
-         ============================================= -->
-    <section id="contact" class="contact-section hidden-section">
-        <div class="contact-form-container">
-            <h2 class="section-title text-center mb-12">
-                Get in <span class="text-gradient">Touch</span>
+    <!-- Contact Section -->
+    <section id="contact" class="[CONTACT_SECTION]">
+        <div class="[CONTACT_FORM_CONTAINER]">
+            <h2 class="[SECTION_TITLE] text-center mb-12">
+                Get in <span class="[TEXT_GRADIENT]">Touch</span>
             </h2>
-            <form id="contact-form" class="contact-form glass">
-                <input 
-                    type="text" 
-                    name="from_name" 
-                    required 
-                    placeholder="Your Name" 
-                    class="form-input input-focus"
-                >
-                <input 
-                    type="email" 
-                    name="from_email" 
-                    required 
-                    placeholder="Your Email" 
-                    class="form-input input-focus"
-                >
-                <textarea 
-                    name="message" 
-                    required 
-                    placeholder="Your Message..." 
-                    rows="4" 
-                    class="form-input input-focus"
-                ></textarea>
-                <button type="submit" id="submit-btn" class="submit-button btn-glow">
+            <form id="contact-form" class="[CONTACT_FORM]">
+                <input type="text" name="from_name" required placeholder="Your Name" class="[FORM_INPUT]">
+                <input type="email" name="from_email" required placeholder="Your Email" class="[FORM_INPUT]">
+                <textarea name="message" required placeholder="Your Message..." rows="4" class="[FORM_INPUT]"></textarea>
+                <button type="submit" id="submit-btn" class="[SUBMIT_BUTTON]">
                     <span id="btn-text">Send Message</span>
                     <span id="btn-loading" class="hidden">
                         <svg class="animate-spin h-5 w-5 mx-auto" viewBox="0 0 24 24">
@@ -263,26 +223,25 @@
         </div>
     </section>
 
-    <!-- =============================================
-         FOOTER
-         ============================================= -->
-    <footer class="footer">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <p class="footer-text">© 2026 Yucast. Built with ☕ and ❤️ by Cyber Wuruhi.</p>
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy</a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms</a>
-                <a href="pricing.html" class="text-gray-500 hover:text-white transition-colors text-sm">Pricing</a>
-                <a href="#contact" class="text-gray-500 hover:text-white transition-colors text-sm">Contact</a>
+    <!-- Footer -->
+    <footer class="[FOOTER]">
+        <div class="[CONTAINER_LG] [FLEX_COL_CENTER]">
+            <p class="[FOOTER_TEXT]">© 2026 Yucast. Built with ☕ and ❤️ by Cyber Wuruhi.</p>
+            <div class="[FOOTER_LINKS]">
+                <a href="#" class="[FOOTER_LINK]">Privacy</a>
+                <a href="#" class="[FOOTER_LINK]">Terms</a>
+                <a href="pricing.html" class="[FOOTER_LINK]">Pricing</a>
+                <a href="#contact" class="[FOOTER_LINK]">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- =============================================
-         SCRIPTS
-         ============================================= -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="js/content.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/core/hydrate.js"></script>
+    <script src="js/core/utils.js"></script>
+    <script src="js/styles/shared.js"></script>
+    <script src="js/styles/index-styles.js"></script>
+    <script src="js/pages/index.js"></script>
 </body>
 </html>

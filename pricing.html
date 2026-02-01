@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Yucast | Kafka Flow Visualizer</title>
     
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/theme.js"></script>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="[PAGE_BODY]">
@@ -20,7 +25,7 @@
         </div>
     </div>
 
-    <!-- Animated Background -->
+    <!-- Background -->
     <div class="[BG_CONTAINER]">
         <div class="[BG_OVERLAY]"></div>
         <div class="[BG_GLOW_PURPLE]"></div>
@@ -29,11 +34,11 @@
         <div class="[GRID_OVERLAY]"></div>
     </div>
 
-    <!-- Floating Particles -->
+    <!-- Particles -->
     <div class="[PARTICLES_CONTAINER]">
-        <div class="[PARTICLE_1]"></div>
-        <div class="[PARTICLE_2]" style="left: 80%; top: 30%; animation-delay: 1s;"></div>
-        <div class="[PARTICLE_3]" style="left: 70%; top: 70%; animation-delay: 2s;"></div>
+        <div class="[PARTICLE_MD] particle-1"></div>
+        <div class="[PARTICLE_SM]" style="left: 80%; top: 30%; animation-delay: 1s;"></div>
+        <div class="[PARTICLE_LG]" style="left: 70%; top: 70%; animation-delay: 2s;"></div>
     </div>
 
     <!-- Navigation -->
@@ -52,7 +57,7 @@
                 <a href="pricing.html" class="[NAV_LINK_ACTIVE]">Pricing</a>
                 <a href="index.html#contact" class="[NAV_LINK]">Contact</a>
             </div>
-            <div class="[NAV_CTA_CONTAINER]">
+            <div class="[FLEX_GAP_4]">
                 <a href="index.html#contact" class="[CTA_BUTTON]">Get in Touch</a>
             </div>
         </div>
@@ -60,7 +65,7 @@
 
     <!-- Pricing Hero -->
     <section class="[PRICING_HERO]">
-        <div class="[CONTAINER_MD]">
+        <div class="[CONTAINER_MD] text-center">
             <div class="[STATUS_BADGE]">
                 <span class="[STATUS_BADGE_TEXT]">💰 Simple, transparent pricing</span>
             </div>
@@ -153,12 +158,10 @@
                         </li>
                     </ul>
                     
-                    <a href="index.html#contact" class="[PLAN_BUTTON_STARTER]">
-                        Get Started Free
-                    </a>
+                    <a href="index.html#contact" class="[PLAN_BTN_STARTER]">Get Started Free</a>
                 </div>
 
-                <!-- Pro Plan (Popular) -->
+                <!-- Pro Plan -->
                 <div class="[PRICING_CARD_FEATURED]">
                     <div class="[POPULAR_BADGE]">Most Popular</div>
                     
@@ -221,9 +224,7 @@
                         </li>
                     </ul>
                     
-                    <a href="index.html#contact" class="[PLAN_BUTTON_PRO]">
-                        Start 14-Day Trial
-                    </a>
+                    <a href="index.html#contact" class="[PLAN_BTN_PRO]">Start 14-Day Trial</a>
                 </div>
 
                 <!-- Enterprise Plan -->
@@ -292,9 +293,7 @@
                         </li>
                     </ul>
                     
-                    <a href="index.html#contact" class="[PLAN_BUTTON_ENTERPRISE]">
-                        Contact Sales
-                    </a>
+                    <a href="index.html#contact" class="[PLAN_BTN_ENTERPRISE]">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -373,7 +372,7 @@
 
     <!-- CTA Section -->
     <section class="[CTA_SECTION]">
-        <div class="[CONTAINER_MD]">
+        <div class="[CONTAINER_MD] text-center">
             <div class="[CTA_BOX]">
                 <div class="[CTA_BOX_GLOW]"></div>
                 <div class="[CTA_BOX_CONTENT]">
@@ -381,9 +380,7 @@
                     <p class="[CTA_SUBTITLE]">
                         Our team is here to help you find the perfect plan for your needs. Get a personalized demo and see Yucast in action.
                     </p>
-                    <a href="index.html#contact" class="[MAIN_CTA]">
-                        Schedule a Demo
-                    </a>
+                    <a href="index.html#contact" class="[MAIN_CTA]">Schedule a Demo</a>
                 </div>
             </div>
         </div>
@@ -401,8 +398,11 @@
         </div>
     </footer>
 
-    <!-- Scripts: styles must load before pricing.js -->
+    <!-- Scripts -->
+    <script src="js/core/hydrate.js"></script>
+    <script src="js/core/utils.js"></script>
+    <script src="js/styles/shared.js"></script>
     <script src="js/styles/pricing-styles.js"></script>
-    <script src="js/pricing.js"></script>
+    <script src="js/pages/pricing.js"></script>
 </body>
 </html>

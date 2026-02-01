@@ -1,0 +1,14 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
