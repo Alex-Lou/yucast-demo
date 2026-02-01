@@ -115,17 +115,34 @@ function setupContactLinks() {
  * Setup smooth scroll for anchor links
  */
 function setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    // On cible tous les liens qui contiennent un '#'
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // 1. Récupérer l'ID de la cible (ex: "features")
             const href = this.getAttribute('href');
+            
+            // Si le lien est juste "#" (haut de page), on laisse faire
             if (href === '#') return;
 
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+            // On extrait l'ID après le # (utile si le lien est "index.html#features")
+            const targetId = href.split('#')[1];
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                e.preventDefault(); // On bloque le saut brutal par défaut
+
+                // 2. CONFIGURATION DU DÉCALAGE (C'est ici que tu règles ton problème)
+                // 100px est une bonne moyenne (80px de navbar + 20px d'espace)
+                // Si ça cache encore un peu, augmente ce chiffre (ex: 120)
+                const headerOffset = 100; 
+                
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                // 3. Le scroll fluide
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
                 });
             }
         });

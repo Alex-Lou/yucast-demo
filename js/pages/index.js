@@ -271,6 +271,8 @@ function initIndexPage() {
     initEmailJS();
     setupContactForm();
     setupContactReveal();
+
+    document.body.classList.add('loaded');
 }
 
 document.addEventListener('DOMContentLoaded', initIndexPage);

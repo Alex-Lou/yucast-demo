@@ -9,8 +9,8 @@ function renderNavbar(activePage = 'index', basePath = '') {
     const path = basePath ? (basePath.endsWith('/') ? basePath : basePath + '/') : '';
 
     const navLinks = [
-        { href: 'index.html#features', key: 'nav_features', id: 'features' },
         { href: 'index.html#demo', key: 'nav_schema', id: 'demo' },
+        { href: 'index.html#features', key: 'nav_features', id: 'features' },
         { href: 'index.html#architecture', key: 'nav_arch', id: 'architecture' },
         { href: 'pricing.html', key: 'nav_pricing', id: 'pricing' },
         { href: 'index.html#contact', key: 'nav_contact', id: 'contact' }

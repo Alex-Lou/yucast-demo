@@ -236,17 +236,16 @@ function initPricingPage() {
     injectNavbar('pricing');
     injectFooter();
 
-    // 2. Setup des utilitaires
     setupNavbar();
     setupSmoothScroll();
 
-    // 3. Rendu du contenu dynamique ET application des styles
     renderPricingCards();
     renderFaq();
     
-    // Ré-application des styles pour la FAQ
     const combinedStyles = { ...SHARED_STYLES, ...PRICING_STYLES };
     hydrateStyles(combinedStyles);
+
+    document.body.classList.add('loaded');
 }
 
 document.addEventListener('DOMContentLoaded', initPricingPage);

@@ -1213,3 +1213,15 @@ html { scroll-behavior: smooth; }
 .lang-option.active .check {
     opacity: 1;
 }
+
+/* =============================================
+   PREVENTION DU FLASH BLANC (FOUC)
+   ============================================= */
+body {
+    opacity: 0; /* Invisible au départ */
+    transition: opacity 0.3s ease-in-out; /* Apparition douce */
+}
+
+body.loaded {
+    opacity: 1; /* Visible quand le JS est prêt */
+}
