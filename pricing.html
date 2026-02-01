@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Yucast | Kafka Flow Visualizer</title>
     
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/theme.js"></script>
     
@@ -13,56 +14,9 @@
 </head>
 <body class="[PAGE_BODY]">
     
-    <!-- Toast Notification -->
-    <div id="toast" class="[TOAST_CONTAINER]">
-        <div class="[TOAST_CONTENT]">
-            <span id="toast-icon"></span>
-            <span id="toast-message" class="[TOAST_MESSAGE]"></span>
-        </div>
-    </div>
-
-    <!-- Background -->
-    <div class="[BG_CONTAINER]">
-        <div class="[BG_OVERLAY]"></div>
-        <div class="[BG_GLOW_PURPLE]"></div>
-        <div class="[BG_GLOW_CYAN]"></div>
-        <div class="[BG_GLOW_INDIGO]"></div>
-        <div class="[GRID_OVERLAY]"></div>
-    </div>
-
-    <!-- Particles -->
-    <div class="[PARTICLES_CONTAINER]">
-        <div class="[PARTICLE_MD] particle-1"></div>
-        <div class="[PARTICLE_SM]" style="left: 80%; top: 30%; animation-delay: 1s;"></div>
-        <div class="[PARTICLE_LG]" style="left: 70%; top: 70%; animation-delay: 2s;"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav id="navbar" class="[NAVBAR]">
-        <div class="[NAVBAR_CONTAINER]">
-            <a href="index.html" class="[LOGO_CONTAINER]">
-                <div class="[LOGO_ICON]">
-                    <span class="[LOGO_ICON_TEXT]">Y</span>
-                </div>
-                <span class="[LOGO_TEXT]">Yucast</span>
-            </a>
-            <div class="[NAV_LINKS]">
-                <a href="index.html#features" class="[NAV_LINK]" data-i18n="nav_features">Features</a>
-                <a href="index.html#demo" class="[NAV_LINK]" data-i18n="nav_schema">Schema</a>
-                <a href="index.html#architecture" class="[NAV_LINK]" data-i18n="nav_arch">Architecture</a>
-                <a href="pricing.html" class="[NAV_LINK_ACTIVE]" data-i18n="nav_pricing">Pricing</a>
-                <a href="index.html#contact" class="[NAV_LINK]" data-i18n="nav_contact">Contact</a>
-            </div>
-            <div class="[FLEX_GAP_4]" style="display: flex; align-items: center; gap: 1rem;">
-                <div class="lang-switch" style="display: flex; gap: 0.5rem; font-size: 0.8rem; font-weight: bold; color: white;">
-                    <span onclick="changeLanguage('en')" style="cursor: pointer; opacity: 0.8;">EN</span>
-                    <span>|</span>
-                    <span onclick="changeLanguage('fr')" style="cursor: pointer; opacity: 0.8;">FR</span>
-                </div>
-                <a href="index.html#contact" class="[CTA_BUTTON]" data-i18n="cta_touch">Get in Touch</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Dynamic Components -->
+    <div id="background-container"></div>
+    <div id="navbar-container"></div>
 
     <!-- Pricing Hero -->
     <section class="[PRICING_HERO]">
@@ -80,7 +34,6 @@
                 Start free, scale as you grow. No hidden fees, no surprises.
             </p>
 
-            <!-- Billing Toggle -->
             <div class="[BILLING_TOGGLE]">
                 <span id="monthly-label" class="[BILLING_LABEL_ACTIVE]" data-i18n="billing_monthly">Monthly</span>
                 <button id="billing-toggle" class="[TOGGLE_SWITCH]" onclick="toggleBilling()">
@@ -97,206 +50,7 @@
     <!-- Pricing Cards -->
     <section class="[PRICING_SECTION]">
         <div class="[CONTAINER_LG]">
-            <div class="[PRICING_GRID]">
-                
-                <!-- Starter Plan -->
-                <div class="[PRICING_CARD]">
-                    <div class="[CARD_HEADER]">
-                        <div class="[PLAN_ICON_STARTER]">
-                            <span>🚀</span>
-                        </div>
-                        <h3 class="[PLAN_NAME]" data-i18n="plan_starter">Starter</h3>
-                        <p class="[PLAN_DESCRIPTION]" data-i18n="plan_starter_desc">Perfect for exploring Yucast</p>
-                    </div>
-                    
-                    <div class="[PRICE_CONTAINER]">
-                        <span class="[PRICE_AMOUNT]" data-i18n="price_free">Free</span>
-                        <span class="[PRICE_PERIOD]" data-i18n="price_forever">forever</span>
-                    </div>
-                    
-                    <ul class="[FEATURES_LIST]">
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="starter_f1"><strong>1</strong> Kafka cluster</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="starter_f2">Up to <strong>50</strong> topics</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="starter_f3"><strong>24h</strong> metrics retention</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_visualization">Real-time visualization</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_support_community">Community support</span>
-                        </li>
-                        <li class="[FEATURE_ITEM_DISABLED]">
-                            <svg class="[FEATURE_X]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                            <span data-i18n="feature_alerting">Alerting system</span>
-                        </li>
-                        <li class="[FEATURE_ITEM_DISABLED]">
-                            <svg class="[FEATURE_X]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                            <span data-i18n="feature_export">Data export</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="index.html#contact" class="[PLAN_BTN_STARTER]" data-i18n="btn_start_free">Get Started Free</a>
-                </div>
-
-                <!-- Pro Plan -->
-                <div class="[PRICING_CARD_FEATURED]">
-                    <div class="[POPULAR_BADGE]" data-i18n="popular_badge">Most Popular</div>
-                    
-                    <div class="[CARD_HEADER]">
-                        <div class="[PLAN_ICON_PRO]">
-                            <span>⚡</span>
-                        </div>
-                        <h3 class="[PLAN_NAME]" data-i18n="plan_pro">Pro</h3>
-                        <p class="[PLAN_DESCRIPTION]" data-i18n="plan_pro_desc">For growing teams & projects</p>
-                    </div>
-                    
-                    <div class="[PRICE_CONTAINER]">
-                        <span class="[PRICE_CURRENCY]">€</span>
-                        <span class="[PRICE_AMOUNT]" id="pro-price">49</span>
-                        <span class="[PRICE_PERIOD]">/ <span id="pro-period" data-i18n="price_month">month</span></span>
-                    </div>
-                    
-                    <ul class="[FEATURES_LIST]">
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="pro_f1">Up to <strong>5</strong> Kafka clusters</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="pro_f2">Up to <strong>500</strong> topics</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="pro_f3"><strong>30 days</strong> metrics retention</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="pro_f4">Up to <strong>10</strong> team members</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="pro_f5"><strong>Email support</strong> (48h response)</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_alerting_advanced">Advanced alerting</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_export_csv">CSV / JSON export</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="index.html#contact" class="[PLAN_BTN_PRO]" data-i18n="btn_trial">Start 14-Day Trial</a>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="[PRICING_CARD_ENTERPRISE]">
-                    <div class="[CARD_HEADER]">
-                        <div class="[PLAN_ICON_ENTERPRISE]">
-                            <span>🏢</span>
-                        </div>
-                        <h3 class="[PLAN_NAME]" data-i18n="plan_enterprise">Enterprise</h3>
-                        <p class="[PLAN_DESCRIPTION]" data-i18n="plan_enterprise_desc">For large-scale operations</p>
-                    </div>
-                    
-                    <div class="[PRICE_CONTAINER]">
-                        <span class="[PRICE_AMOUNT]" data-i18n="price_custom">Custom</span>
-                        <span class="[PRICE_PERIOD]" data-i18n="price_pricing">pricing</span>
-                    </div>
-                    
-                    <ul class="[FEATURES_LIST]">
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="enterprise_f1"><strong>Unlimited</strong> clusters</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="enterprise_f2"><strong>Unlimited</strong> topics</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="enterprise_f3"><strong>1 year</strong> metrics retention</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="enterprise_f4"><strong>Unlimited</strong> team members</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="enterprise_f5"><strong>Dedicated support</strong> + SLA</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_sso">SSO / SAML integration</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_onpremise">On-premise deployment</span>
-                        </li>
-                        <li class="[FEATURE_ITEM]">
-                            <svg class="[FEATURE_CHECK]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span data-i18n="feature_api">Custom API access</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="index.html#contact" class="[PLAN_BTN_ENTERPRISE]" data-i18n="btn_contact_sales">Contact Sales</a>
-                </div>
-            </div>
+            <div id="pricing-grid" class="[PRICING_GRID]"></div>
         </div>
     </section>
 
@@ -309,68 +63,7 @@
                     <span class="[TEXT_GRADIENT]" data-i18n="faq_title_span">Questions</span>
                 </h2>
             </div>
-            
-            <div class="[FAQ_LIST]">
-                <div class="[FAQ_ITEM]">
-                    <button class="[FAQ_QUESTION]" onclick="toggleFaq(this)">
-                        <span data-i18n="faq_q1">Can I switch plans at any time?</span>
-                        <svg class="[FAQ_ICON]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div class="[FAQ_ANSWER]">
-                        <p data-i18n="faq_a1">Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll be charged the prorated difference. When downgrading, the new rate takes effect at your next billing cycle.</p>
-                    </div>
-                </div>
-                
-                <div class="[FAQ_ITEM]">
-                    <button class="[FAQ_QUESTION]" onclick="toggleFaq(this)">
-                        <span data-i18n="faq_q2">Is there a free trial for Pro?</span>
-                        <svg class="[FAQ_ICON]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div class="[FAQ_ANSWER]">
-                        <p data-i18n="faq_a2">Absolutely! Every Pro subscription starts with a 14-day free trial. No credit card required. You'll have full access to all Pro features during the trial period.</p>
-                    </div>
-                </div>
-                
-                <div class="[FAQ_ITEM]">
-                    <button class="[FAQ_QUESTION]" onclick="toggleFaq(this)">
-                        <span data-i18n="faq_q3">What payment methods do you accept?</span>
-                        <svg class="[FAQ_ICON]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div class="[FAQ_ANSWER]">
-                        <p data-i18n="faq_a3">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for Enterprise plans. All payments are processed securely through Stripe.</p>
-                    </div>
-                </div>
-                
-                <div class="[FAQ_ITEM]">
-                    <button class="[FAQ_QUESTION]" onclick="toggleFaq(this)">
-                        <span data-i18n="faq_q4">Can I self-host Yucast?</span>
-                        <svg class="[FAQ_ICON]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div class="[FAQ_ANSWER]">
-                        <p data-i18n="faq_a4">On-premise deployment is available with the Enterprise plan. This includes Docker images, Kubernetes Helm charts, and dedicated installation support. Contact our sales team for more details.</p>
-                    </div>
-                </div>
-                
-                <div class="[FAQ_ITEM]">
-                    <button class="[FAQ_QUESTION]" onclick="toggleFaq(this)">
-                        <span data-i18n="faq_q5">What's included in the maintenance contract?</span>
-                        <svg class="[FAQ_ICON]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                    <div class="[FAQ_ANSWER]">
-                        <p data-i18n="faq_a5">Enterprise maintenance includes: priority bug fixes, security patches, version upgrades, 24/7 monitoring assistance, quarterly architecture reviews, and a dedicated customer success manager.</p>
-                    </div>
-                </div>
-            </div>
+            <div id="faq-list" class="[FAQ_LIST]"></div>
         </div>
     </section>
 
@@ -382,7 +75,7 @@
                 <div class="[CTA_BOX_CONTENT]">
                     <h2 class="[CTA_TITLE]" data-i18n="cta_questions">Still have questions?</h2>
                     <p class="[CTA_SUBTITLE]" data-i18n="cta_questions_desc">
-                        Our team is here to help you find the perfect plan for your needs. Get a personalized demo and see Yucast in action.
+                        Our team is here to help you find the perfect plan for your needs.
                     </p>
                     <a href="index.html#contact" class="[MAIN_CTA]" data-i18n="cta_demo">Schedule a Demo</a>
                 </div>
@@ -391,23 +84,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="[FOOTER]">
-        <div class="[CONTAINER_LG] [FLEX_COL_CENTER]">
-            <p class="[FOOTER_TEXT]" data-i18n="footer_copyright">© 2025 Yucast. Built with ☕ and ❤️ by Cyber Wuruhi.</p>
-            <div class="[FOOTER_LINKS]">
-                <a href="#" class="[FOOTER_LINK]" data-i18n="footer_privacy">Privacy</a>
-                <a href="#" class="[FOOTER_LINK]" data-i18n="footer_terms">Terms</a>
-                <a href="index.html#contact" class="[FOOTER_LINK]" data-i18n="nav_contact">Contact</a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
+    <script src="js/i18n.js"></script>
     <script src="js/core/hydrate.js"></script>
     <script src="js/core/utils.js"></script>
     <script src="js/styles/shared.js"></script>
     <script src="js/styles/pricing-styles.js"></script>
+    <script src="js/components/lang-dropdown.js"></script>
+    <script src="js/components/navbar.js"></script>
+    <script src="js/components/footer.js"></script>
+    <script src="js/components/background.js"></script>
     <script src="js/pages/pricing.js"></script>
-    <script src="js/i18n.js"></script>
 </body>
 </html>

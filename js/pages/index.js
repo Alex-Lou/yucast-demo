@@ -11,43 +11,19 @@ const EMAILJS_CONFIG = {
 };
 
 // =============================================
-// FEATURES DATA (avec clés i18n)
+// FEATURES DATA
 // =============================================
 const featuresData = [
-    {
-        icon: '🌊',
-        titleKey: 'feature_1_title',
-        descKey: 'feature_1_desc'
-    },
-    {
-        icon: '🔍',
-        titleKey: 'feature_2_title',
-        descKey: 'feature_2_desc'
-    },
-    {
-        icon: '🧹',
-        titleKey: 'feature_3_title',
-        descKey: 'feature_3_desc'
-    },
-    {
-        icon: '📊',
-        titleKey: 'feature_4_title',
-        descKey: 'feature_4_desc'
-    },
-    {
-        icon: '🎨',
-        titleKey: 'feature_5_title',
-        descKey: 'feature_5_desc'
-    },
-    {
-        icon: '⚡',
-        titleKey: 'feature_6_title',
-        descKey: 'feature_6_desc'
-    }
+    { icon: '🌊', titleKey: 'feature_1_title', descKey: 'feature_1_desc' },
+    { icon: '🔍', titleKey: 'feature_2_title', descKey: 'feature_2_desc' },
+    { icon: '🧹', titleKey: 'feature_3_title', descKey: 'feature_3_desc' },
+    { icon: '📊', titleKey: 'feature_4_title', descKey: 'feature_4_desc' },
+    { icon: '🎨', titleKey: 'feature_5_title', descKey: 'feature_5_desc' },
+    { icon: '⚡', titleKey: 'feature_6_title', descKey: 'feature_6_desc' }
 ];
 
 // =============================================
-// ARCHITECTURE DATA (avec clés i18n)
+// ARCHITECTURE DATA
 // =============================================
 const architectureData = [
     {
@@ -73,27 +49,68 @@ const architectureData = [
 ];
 
 // =============================================
-// TRANSLATION HELPER
+// DEMO SVG
 // =============================================
+function renderDemoSvg() {
+    const container = document.getElementById('demo-svg-container');
+    if (!container) return;
 
-/**
- * Get translation for a key
- */
-function getTranslation(key) {
-    const lang = localStorage.getItem('selectedLang') || 'en';
-    if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
-        return translations[lang][key];
-    }
-    return key;
+    container.innerHTML = `
+    <svg class="w-full h-full" viewBox="0 0 800 400">
+        <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.8"/>
+            </linearGradient>
+            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#ec4899" stop-opacity="0.8"/>
+            </linearGradient>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <g filter="url(#glow)">
+            <path d="M 100 200 Q 250 100 400 200 T 700 200" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash"/>
+            <path d="M 100 150 Q 300 250 500 150 T 700 180" fill="none" stroke="url(#lineGradient2)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-500"/>
+            <path d="M 100 280 Q 200 180 400 280 T 700 250" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-1000"/>
+        </g>
+        
+        <g>
+            <rect x="60" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
+            <text x="100" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" data-i18n="demo_producer">${getTranslation('demo_producer')}</text>
+            
+            <rect x="320" y="140" width="160" height="120" rx="16" fill="#1a1a24" stroke="#a855f7" stroke-width="2"/>
+            <text x="400" y="180" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Kafka Cluster</text>
+            <text x="400" y="200" text-anchor="middle" fill="#666" font-size="10" data-i18n="demo_cluster_info">${getTranslation('demo_cluster_info')}</text>
+            <text x="400" y="220" text-anchor="middle" fill="#22d3ee" font-size="10" data-i18n="demo_active">${getTranslation('demo_active')}</text>
+            
+            <rect x="660" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
+            <text x="700" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" data-i18n="demo_consumer">${getTranslation('demo_consumer')}</text>
+        </g>
+        
+        <circle r="4" fill="#22d3ee" filter="url(#glow)">
+            <animateMotion dur="3s" repeatCount="indefinite" path="M 100 200 Q 250 100 400 200 T 700 200"/>
+        </circle>
+        <circle r="4" fill="#a855f7" filter="url(#glow)">
+            <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M 100 150 Q 300 250 500 150 T 700 180"/>
+        </circle>
+        <circle r="4" fill="#ec4899" filter="url(#glow)">
+            <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M 100 280 Q 200 180 400 280 T 700 250"/>
+        </circle>
+    </svg>
+    `;
 }
 
 // =============================================
 // RENDER FUNCTIONS
 // =============================================
 
-/**
- * Renders the features grid
- */
 function renderFeatures() {
     const container = document.getElementById('features-grid');
     if (!container) return;
@@ -112,9 +129,6 @@ function renderFeatures() {
     `).join('');
 }
 
-/**
- * Renders the architecture grid
- */
 function renderArchitecture() {
     const container = document.getElementById('architecture-grid');
     if (!container) return;
@@ -133,17 +147,13 @@ function renderArchitecture() {
     container.innerHTML = architectureData.map((stack, index) => `
         <div class="glass rounded-2xl p-8 animate-fade-in-up" style="animation-delay: ${index * 150}ms">
             <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                <span class="${iconClasses[stack.iconClass]}">
-                    ${stack.mainIcon}
-                </span>
+                <span class="${iconClasses[stack.iconClass]}">${stack.mainIcon}</span>
                 <span data-i18n="${stack.titleKey}">${getTranslation(stack.titleKey)}</span>
             </h3>
             <div class="space-y-4">
                 ${stack.items.map(item => `
                     <div class="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-colors">
-                        <div class="${iconClasses[item.iconClass]}">
-                            ${item.abbr}
-                        </div>
+                        <div class="${iconClasses[item.iconClass]}">${item.abbr}</div>
                         <div>
                             <div class="font-semibold text-white text-sm" data-i18n="${item.nameKey}">${getTranslation(item.nameKey)}</div>
                             <div class="text-xs text-gray-500 mt-0.5" data-i18n="${item.descKey}">${getTranslation(item.descKey)}</div>
@@ -159,28 +169,18 @@ function renderArchitecture() {
 // CONTACT FORM
 // =============================================
 
-/**
- * Initialize EmailJS
- */
 function initEmailJS() {
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_CONFIG.publicKey);
     }
 }
 
-/**
- * Setup contact form submission
- */
 function setupContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
-
     form.addEventListener('submit', handleFormSubmit);
 }
 
-/**
- * Handle form submission
- */
 async function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -189,25 +189,17 @@ async function handleFormSubmit(e) {
     const btnText = document.getElementById('btn-text');
     const btnLoading = document.getElementById('btn-loading');
 
-    // Disable and show loading
     if (submitBtn) submitBtn.disabled = true;
     if (btnText) btnText.classList.add('hidden');
     if (btnLoading) btnLoading.classList.remove('hidden');
 
     try {
-        await emailjs.sendForm(
-            EMAILJS_CONFIG.serviceId,
-            EMAILJS_CONFIG.templateId,
-            form
-        );
-
+        await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
         showToast(getTranslation('toast_success'), 'success');
         form.reset();
-
     } catch (error) {
         console.error('EmailJS Error:', error);
         showToast(getTranslation('toast_error'), 'error');
-
     } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.classList.remove('hidden');
@@ -215,25 +207,16 @@ async function handleFormSubmit(e) {
     }
 }
 
-// =============================================
-// CONTACT SECTION REVEAL
-// =============================================
-
-/**
- * Setup contact section reveal on button click
- */
 function setupContactReveal() {
     const contactSection = document.getElementById('contact');
     if (!contactSection) return;
 
-    // Check URL params for showContact
     const urlParams = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
     if (urlParams.get('showContact') === 'true' || hash === '#contact') {
         contactSection.classList.remove('hidden-section');
         contactSection.classList.add('visible');
-
         setTimeout(() => {
             contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (urlParams.get('showContact')) {
@@ -242,9 +225,7 @@ function setupContactReveal() {
         }, 100);
     }
 
-    // Setup click handlers for contact links
-    const contactLinks = document.querySelectorAll('a[href="#contact"]');
-    contactLinks.forEach(link => {
+    document.querySelectorAll('a[href="#contact"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             contactSection.classList.remove('hidden-section');
@@ -260,11 +241,13 @@ function setupContactReveal() {
 // INITIALIZATION
 // =============================================
 
-/**
- * Initialize index page
- */
 function initIndexPage() {
-    // Hydrate styles (SHARED + INDEX combined)
+    // Inject dynamic components
+    injectBackground('default');
+    injectNavbar('index');
+    injectFooter();
+
+    // Hydrate styles
     const combinedStyles = { ...SHARED_STYLES, ...INDEX_STYLES };
     hydrateStyles(combinedStyles);
 
@@ -273,6 +256,7 @@ function initIndexPage() {
     setupSmoothScroll();
 
     // Render dynamic content
+    renderDemoSvg();
     renderFeatures();
     renderArchitecture();
 
@@ -282,5 +266,4 @@ function initIndexPage() {
     setupContactReveal();
 }
 
-// Run on DOM ready
 document.addEventListener('DOMContentLoaded', initIndexPage);

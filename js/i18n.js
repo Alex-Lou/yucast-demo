@@ -1624,6 +1624,23 @@ const availableLanguages = {
     ja: { name: "日本語", flag: "🇯🇵" }
 };
 
+
+// =============================================
+// HELPER FUNCTION
+// =============================================
+function getTranslation(key) {
+    const currentLang = localStorage.getItem('selectedLang') || 
+                        (navigator.language && navigator.language.split('-')[0]) || 
+                        'en';
+    
+    const langData = translations[currentLang] || translations['en'];
+
+    return langData[key] || key;
+}
+
+window.getTranslation = getTranslation;
+
+
 function changeLanguage(lang) {
     if (!translations[lang]) {
         return;
