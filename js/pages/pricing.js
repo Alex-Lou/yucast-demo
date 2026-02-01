@@ -32,7 +32,7 @@ const pricingPlans = [
         icon: '⚡',
         nameKey: 'plan_pro',
         descKey: 'plan_pro_desc',
-        price: { monthly: 49, yearly: 470 },
+        price: { monthly: 49, yearly: 39 },
         iconClass: 'PLAN_ICON_PRO',
         btnClass: 'PLAN_BTN_PRO',
         btnKey: 'btn_trial',
