@@ -1,18 +1,12 @@
 // js/pages/index.js
 // Page logic for index.html (homepage)
 
-// =============================================
-// EMAILJS CONFIGURATION
-// =============================================
 const EMAILJS_CONFIG = {
     publicKey: 'AlcXNClkk7JrUAF-y',
     serviceId: 'service_9nkxilk',
     templateId: 'template_c08wjnn'
 };
 
-// =============================================
-// FEATURES DATA
-// =============================================
 const featuresData = [
     { icon: '🌊', titleKey: 'feature_1_title', descKey: 'feature_1_desc' },
     { icon: '🔍', titleKey: 'feature_2_title', descKey: 'feature_2_desc' },
@@ -22,9 +16,6 @@ const featuresData = [
     { icon: '⚡', titleKey: 'feature_6_title', descKey: 'feature_6_desc' }
 ];
 
-// =============================================
-// ARCHITECTURE DATA
-// =============================================
 const architectureData = [
     {
         titleKey: "arch_backend_title",
@@ -48,73 +39,10 @@ const architectureData = [
     }
 ];
 
-// =============================================
-// DEMO SVG
-// =============================================
-function renderDemoSvg() {
-    const container = document.getElementById('demo-svg-container');
-    if (!container) return;
-
-    container.innerHTML = `
-    <svg class="w-full h-full" viewBox="0 0 800 400">
-        <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.8"/>
-            </linearGradient>
-            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#ec4899" stop-opacity="0.8"/>
-            </linearGradient>
-            <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
-        
-        <g filter="url(#glow)">
-            <path d="M 100 200 Q 250 100 400 200 T 700 200" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash"/>
-            <path d="M 100 150 Q 300 250 500 150 T 700 180" fill="none" stroke="url(#lineGradient2)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-500"/>
-            <path d="M 100 280 Q 200 180 400 280 T 700 250" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-1000"/>
-        </g>
-        
-        <g>
-            <rect x="60" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
-            <text x="100" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" data-i18n="demo_producer">${getTranslation('demo_producer')}</text>
-            
-            <rect x="320" y="140" width="160" height="120" rx="16" fill="#1a1a24" stroke="#a855f7" stroke-width="2"/>
-            <text x="400" y="180" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Kafka Cluster</text>
-            <text x="400" y="200" text-anchor="middle" fill="#666" font-size="10" data-i18n="demo_cluster_info">${getTranslation('demo_cluster_info')}</text>
-            <text x="400" y="220" text-anchor="middle" fill="#22d3ee" font-size="10" data-i18n="demo_active">${getTranslation('demo_active')}</text>
-            
-            <rect x="660" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
-            <text x="700" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" data-i18n="demo_consumer">${getTranslation('demo_consumer')}</text>
-        </g>
-        
-        <circle r="4" fill="#22d3ee" filter="url(#glow)">
-            <animateMotion dur="3s" repeatCount="indefinite" path="M 100 200 Q 250 100 400 200 T 700 200"/>
-        </circle>
-        <circle r="4" fill="#a855f7" filter="url(#glow)">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M 100 150 Q 300 250 500 150 T 700 180"/>
-        </circle>
-        <circle r="4" fill="#ec4899" filter="url(#glow)">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M 100 280 Q 200 180 400 280 T 700 250"/>
-        </circle>
-    </svg>
-    `;
-}
-
-// =============================================
-// RENDER FUNCTIONS
-// =============================================
-
+// --- RENDERING ---
 function renderFeatures() {
     const container = document.getElementById('features-grid');
     if (!container) return;
-
     container.innerHTML = featuresData.map((feature, index) => `
         <div class="card-hover group relative p-8 rounded-2xl glass animate-fade-in-up" style="animation-delay: ${index * 100}ms">
             <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
@@ -165,10 +93,7 @@ function renderArchitecture() {
     `).join('');
 }
 
-// =============================================
-// CONTACT FORM
-// =============================================
-
+// --- CONTACT FORM ---
 function initEmailJS() {
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_CONFIG.publicKey);
@@ -183,7 +108,6 @@ function setupContactForm() {
 
 async function handleFormSubmit(e) {
     e.preventDefault();
-
     const form = e.target;
     const submitBtn = document.getElementById('submit-btn');
     const btnText = document.getElementById('btn-text');
@@ -209,13 +133,8 @@ async function handleFormSubmit(e) {
 
 function setupContactReveal() {
     const contactSection = document.getElementById('contact');
-    
-    // Si la section n'existe pas (ex: on est sur la page pricing), on ne fait rien.
-    // Le lien naviguera naturellement vers index.html#contact
     if (!contactSection) return;
 
-    // 1. GESTION AU CHARGEMENT DE LA PAGE
-    // (Cas où l'utilisateur vient de pricing.html vers index.html#contact)
     const urlParams = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
@@ -224,19 +143,15 @@ function setupContactReveal() {
         contactSection.classList.add('visible');
         setTimeout(() => {
             contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            if (hash === '#contact') {
-                history.replaceState(null, null, ' '); 
-            }
+            if (hash === '#contact') history.replaceState(null, null, ' '); 
         }, 100);
     }
 
     document.querySelectorAll('a[href$="#contact"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
             contactSection.classList.remove('hidden-section');
             contactSection.classList.add('visible');
-            
             setTimeout(() => {
                 contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 50);
@@ -244,30 +159,26 @@ function setupContactReveal() {
     });
 }
 
-// =============================================
-// INITIALIZATION
-// =============================================
-
+// --- MAIN INIT ---
 function initIndexPage() {
-    // Inject dynamic components
     injectBackground('default');
-    injectNavbar('index');
+    injectNavbar('index', './');
     injectFooter();
 
-    // Hydrate styles
     const combinedStyles = { ...SHARED_STYLES, ...INDEX_STYLES };
     hydrateStyles(combinedStyles);
 
-    // Setup core utilities
     setupNavbar();
     setupSmoothScroll();
 
-    // Render dynamic content
-    renderDemoSvg();
     renderFeatures();
     renderArchitecture();
 
-    // Setup contact
+    // Init du nouveau moteur Visualizer
+    if (typeof VisualizerEngine !== 'undefined') {
+        VisualizerEngine.init('demo');
+    }
+
     initEmailJS();
     setupContactForm();
     setupContactReveal();

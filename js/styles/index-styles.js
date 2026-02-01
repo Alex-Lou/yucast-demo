@@ -75,7 +75,69 @@ const INDEX_STYLES = {
     FORM_INPUT: "form-input input-focus",
     SUBMIT_BUTTON: "submit-button btn-glow",
     SUBMIT_TEXT: "",
-    SUBMIT_LOADING: "hidden"
+    SUBMIT_LOADING: "hidden",
+
+    // --- AURORA BACKGROUND ---
+    AURORA_CONTAINER: "aurora-container",
+    AURORA_BLOB: "aurora-blob",
+    BLOB_CYAN: "blob-cyan",
+    BLOB_PURPLE: "blob-purple",
+    BLOB_PINK: "blob-pink",
+
+    // --- DEMO SECTION ---
+    DEMO_CONTAINER: "demo-container w-full max-w-5xl mx-auto px-6",
+    DEMO_BOX: "demo-box",
+
+    // --- MODAL CONFIGURATION ---
+    MODAL_OVERLAY: "modal-overlay hidden",
+    MODAL_CONTENT: "modal-content glass",
+    MODAL_HEADER: "modal-header flex justify-between items-center mb-6",
+    MODAL_TITLE: "text-xl font-bold text-white",
+    MODAL_BODY: "modal-body",
+    MODAL_FOOTER: "modal-footer mt-6 flex justify-end gap-3",
+    
+    // --- FORM ELEMENTS (MODAL) ---
+    FORM_GROUP: "form-group mb-4",
+    INPUT_LABEL: "text-xs uppercase tracking-wider text-gray-500 mb-1 block",
+    FORM_INPUT: "form-input w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition-colors",
+    GRID_2_COL: "grid grid-cols-2 gap-4",
+    
+    // --- BUTTONS (MODAL) ---
+    BTN_CANCEL: "px-4 py-2 rounded-lg text-sm text-gray-400 hover:bg-white/5 transition-colors",
+    BTN_DEPLOY: "px-6 py-2 rounded-lg text-sm font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-600 hover:shadow-lg hover:shadow-purple-500/20 transition-all",
+
+    // --- EXISTING STYLES (Conservés pour compatibilité) ---
+    HERO_SECTION: "hero-section relative min-h-screen flex items-center justify-center pt-20",
+    HERO_CONTENT: "hero-content text-center z-10 max-w-4xl mx-auto px-4",
+    STATUS_BADGE: "status-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8",
+    STATUS_DOT_CONTAINER: "relative flex h-2 w-2",
+    STATUS_DOT_PING: "animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75",
+    STATUS_DOT: "relative inline-flex rounded-full h-2 w-2 bg-green-500",
+    STATUS_TEXT: "text-sm text-gray-400 font-medium",
+    
+    HERO_TITLE: "hero-title text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight",
+    HERO_TITLE_GRADIENT: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 animate-gradient",
+    HERO_SUBTITLE: "hero-subtitle text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed",
+    
+    CTA_CONTAINER: "flex flex-col sm:flex-row items-center justify-center gap-4 mb-16",
+    MAIN_CTA: "cta-button px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1",
+    SECONDARY_CTA: "px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-sm",
+
+    FEATURES_SECTION: "features-section py-24 relative",
+    FEATURES_GRID: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
+    
+    ARCHITECTURE_SECTION: "architecture-section py-24 relative bg-black/20",
+    ARCHITECTURE_GRID: "grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto",
+    
+    CONTACT_SECTION: "contact-section py-24 relative",
+    CONTACT_FORM_CONTAINER: "max-w-xl mx-auto bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md",
+    CONTACT_FORM: "space-y-6",
+    SUBMIT_BUTTON: "w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed",
+    
+    SECTION_HEADER: "text-center mb-16",
+    SECTION_TITLE: "text-3xl md:text-4xl font-bold text-white mb-4",
+    SECTION_SUBTITLE: "text-gray-400 max-w-2xl mx-auto",
+    TEXT_GRADIENT: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
 };
 
 // Export for module usage

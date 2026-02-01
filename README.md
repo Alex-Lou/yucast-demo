@@ -28,6 +28,7 @@ yucast/
 │
 ├── js/
 │   ├── i18n.js             # Internationalization
+│   ├── theme.js            # Theme management (e.g., dark/light mode)
 │   │
 │   ├── core/
 │   │   ├── hydrate.js      # Style token hydration
@@ -44,9 +45,13 @@ yucast/
 │   │   ├── index-styles.js # Index page tokens
 │   │   └── pricing-styles.js # Pricing page tokens
 │   │
-│   └── pages/
-│       ├── index.js        # Index page logic
-│       └── pricing.js      # Pricing page logic
+│   ├── pages/
+│   │   ├── index.js        # Index page logic
+│   │   └── pricing.js      # Pricing page logic
+│   │
+│   └── visualizer/
+│       ├── engine.js       # Visualization engine
+│       └── templates.js    # Visualization templates
 │
 ├── .gitignore              # Git ignore file
 ├── package.json            # Project dependencies

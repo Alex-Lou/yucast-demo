@@ -29,6 +29,13 @@
 
     <div class="[BG_CONTAINER]">
         <div class="[BG_OVERLAY]"></div>
+        
+        <div class="[AURORA_CONTAINER]">
+            <div class="[AURORA_BLOB] [BLOB_CYAN]"></div>
+            <div class="[AURORA_BLOB] [BLOB_PURPLE]"></div>
+            <div class="[AURORA_BLOB] [BLOB_PINK]"></div>
+        </div>
+
         <div class="[BG_GLOW_PURPLE]"></div>
         <div class="[BG_GLOW_CYAN]"></div>
         <div class="[BG_GLOW_INDIGO]"></div>
@@ -159,57 +166,7 @@
             </div>
 
             <div class="[DEMO_CONTAINER]">
-                <div id="demo" class="[DEMO_BOX]">
-                    <svg class="w-full h-full" viewBox="0 0 800 400">
-                        <defs>
-                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.8"/>
-                            </linearGradient>
-                            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#ec4899" stop-opacity="0.8"/>
-                            </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <g filter="url(#glow)">
-                            <path d="M 100 200 Q 250 100 400 200 T 700 200" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash"/>
-                            <path d="M 100 150 Q 300 250 500 150 T 700 180" fill="none" stroke="url(#lineGradient2)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-500"/>
-                            <path d="M 100 280 Q 200 180 400 280 T 700 250" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10 5" class="animate-dash delay-1000"/>
-                        </g>
-                        
-                        <g>
-                            <rect x="60" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
-                            <text x="100" y="205" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" data-i18n="demo_producer">Producer</text>
-                            
-                            <rect x="320" y="140" width="160" height="120" rx="16" fill="#1a1a24" stroke="#a855f7" stroke-width="2"/>
-                            <text x="400" y="180" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="bold">Kafka Cluster</text>
-                            <text x="400" y="200" text-anchor="middle" fill="#666" font-size="10" data-i18n="demo_cluster_info">3 brokers • 12 topics</text>
-                            <text x="400" y="220" text-anchor="middle" fill="#22d3ee" font-size="10" data-i18n="demo_active">● Active</text>
-                            
-                            <rect x="660" y="170" width="80" height="60" rx="12" fill="#1a1a24" stroke="#22d3ee" stroke-width="2"/>
-                            <text x="700" y="205" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="bold" data-i18n="demo_consumer">Consumer</text>
-                        </g>
-                        
-                        <circle r="4" fill="#22d3ee" filter="url(#glow)">
-                            <animateMotion dur="3s" repeatCount="indefinite" path="M 100 200 Q 250 100 400 200 T 700 200"/>
-                        </circle>
-                        <circle r="4" fill="#a855f7" filter="url(#glow)">
-                            <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M 100 150 Q 300 250 500 150 T 700 180"/>
-                        </circle>
-                        <circle r="4" fill="#ec4899" filter="url(#glow)">
-                            <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M 100 280 Q 200 180 400 280 T 700 250"/>
-                        </circle>
-                    </svg>
-                    <div class="[DEMO_GRADIENT]"></div>
-                </div>
+                <div id="demo" class="[DEMO_BOX]"></div>
             </div>
         </div>
     </section>
@@ -280,6 +237,51 @@
         </div>
     </footer>
 
+    <div id="config-modal" class="[MODAL_OVERLAY]">
+        <div class="[MODAL_CONTENT]">
+            <div class="[MODAL_HEADER]">
+                <h3 class="[MODAL_TITLE]"><span class="[TEXT_GRADIENT]">Configure</span> Resource</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            
+            <div class="[MODAL_BODY]">
+                <div class="[FORM_GROUP]">
+                    <label class="[INPUT_LABEL]">Resource Name</label>
+                    <input type="text" id="conf-name" class="[FORM_INPUT]" placeholder="e.g., payment-service">
+                </div>
+
+                <div class="[GRID_2_COL]">
+                    <div class="[FORM_GROUP]">
+                        <label class="[INPUT_LABEL]">Memory (RAM)</label>
+                        <select id="conf-ram" class="[FORM_INPUT]">
+                            <option value="512MB">512 MB</option>
+                            <option value="2GB" selected>2 GB</option>
+                            <option value="8GB">8 GB (Pro)</option>
+                            <option value="32GB">32 GB (Ent)</option>
+                        </select>
+                    </div>
+                    <div class="[FORM_GROUP]">
+                        <label class="[INPUT_LABEL]">Instances</label>
+                        <input type="number" id="conf-instances" class="[FORM_INPUT]" value="1" min="1" max="10">
+                    </div>
+                </div>
+
+                <div id="conf-kafka-options" class="mt-4 hidden">
+                    <label class="[INPUT_LABEL]">Partitions</label>
+                    <input type="range" id="conf-partitions" min="1" max="12" value="3" class="w-full accent-purple-500">
+                    <div class="text-right text-xs text-purple-400" id="conf-part-val">3 partitions</div>
+                </div>
+            </div>
+
+            <div class="[MODAL_FOOTER]">
+                <button onclick="closeModal()" class="[BTN_CANCEL]">Cancel</button>
+                <button onclick="deployResource()" class="[BTN_DEPLOY]">
+                    Deploy Node
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script src="js/core/hydrate.js"></script>
@@ -291,7 +293,10 @@
 
     <script src="js/components/background.js"></script>
     <script src="js/components/navbar.js"></script>
-    <script src="js/components/footer.js"></script> <script src="js/pages/index.js"></script>
+    <script src="js/components/footer.js"></script>
+    <script src="js/visualizer/templates.js"></script>
+    <script src="js/visualizer/engine.js"></script>
+    <script src="js/pages/index.js"></script>
     
     <script>
         function toggleLangDropdown() {

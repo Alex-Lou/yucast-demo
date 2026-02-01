@@ -497,6 +497,243 @@ html { scroll-behavior: smooth; }
 }
 
 /* =============================================
+   DEMO PLAYGROUND LABEL
+   ============================================= */
+.demo-test-label {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    
+    background: linear-gradient(to bottom, #ffffff, #6b7280);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    pointer-events: none;
+    user-select: none;
+    
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+}
+
+/* ANIMATED AURORA BACKGROUND */
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Un peu moins de flou pour la petite boite */
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+.blob-cyan {
+    top: -20%; left: -10%; width: 70%; height: 70%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.8) 0%, rgba(0,0,0,0) 70%);
+    animation: aurora-move-1 25s ease-in-out infinite alternate;
+}
+.blob-purple {
+    bottom: -20%; right: -10%; width: 80%; height: 80%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, rgba(0,0,0,0) 70%);
+    animation: aurora-move-2 30s ease-in-out infinite alternate;
+}
+.blob-pink {
+    top: 40%; left: 30%; width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.6) 0%, rgba(0,0,0,0) 70%);
+    animation: aurora-move-3 28s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-move-1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 20%) scale(1.2); } }
+@keyframes aurora-move-2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-15%, -10%) scale(1.1); } }
+@keyframes aurora-move-3 { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-5%, 15%) scale(1.3); } 100% { transform: translate(5%, -5%) scale(0.9); } }
+
+/* =============================================
+   CONFIGURATION MODAL
+   ============================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 400px;
+    background: #13131f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+}
+
+.hidden { display: none; }
+
+/* =============================================
+   CONNECTOR HANDLES
+   ============================================= */
+.connector-handle {
+    cursor: crosshair; /* Curseur "Cible" */
+    transition: all 0.2s ease;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.connector-handle:hover {
+    r: 8px; /* Grossit au survol */
+    fill: #fff !important; /* Devient blanc */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+/* On cache les boules si on ne survole pas le noeud (optionnel, ici je les laisse visibles pour la clarté) */
+.draggable-group:hover .connector-handle {
+    opacity: 1;
+}
+
+
+/* =============================================
+   ENGAGEMENT OVERLAY
+   ============================================= */
+.engagement-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 18, 0.85); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(8px);
+    z-index: 50; /* Au-dessus de tout le SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none; /* Laisse passer les clics tant que c'est invisible */
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.engagement-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Bloque l'interaction pendant le message */
+}
+
+.engagement-text {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.engagement-overlay.active .engagement-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* =============================================
+   FIX SELECT INPUTS (RAM DROPDOWN)
+   ============================================= */
+select.form-input {
+    background-color: rgba(255, 255, 255, 0.05); /* Fond du champ fermé */
+    color: white;
+    cursor: pointer;
+}
+
+select.form-input option {
+    background-color: #13131f; /* Fond du menu ouvert (Dark) */
+    color: white;
+    padding: 10px;
+}
+
+/* Petit ajustement pour que le modal reste bien au-dessus de tout */
+.modal-overlay {
+    z-index: 9999 !important; 
+}
+
+/* =============================================
+   HINT LABEL ("move me")
+   ============================================= */
+@keyframes hint-pulse {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 0.8; transform: translateY(-2px); } /* Plus visible et monte un peu */
+}
+
+.hint-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    fill: #fff;
+    pointer-events: none;
+    text-anchor: middle;
+    
+    animation: hint-pulse 2s infinite ease-in-out;
+}
+
+.fade-out {
+    opacity: 0 !important;
+    animation: none !important;
+    transition: opacity 0.5s ease-out;
+}
+
+
+/* =============================================
+   DEMO METRICS
+   ============================================= */
+.node-metric {
+    font-family: 'Consolas', 'Monaco', monospace; /* Look "Data" */
+    font-size: 10px;
+    fill: #9ca3af; /* Gris clair */
+    pointer-events: none; /* Ne gêne pas le clic */
+    transition: fill 0.3s;
+}
+
+/* Couleurs spécifiques quand ça "chauffe" (optionnel) */
+.metric-high { fill: #f87171; } /* Rouge */
+.metric-ok { fill: #4ade80; }   /* Vert */
+
+
+
+/* =============================================
+   INTERACTIVE SCHEMA
+   ============================================= */
+.draggable-group {
+    cursor: grab;
+    transition: filter 0.3s ease;
+}
+
+.draggable-group:hover {
+    filter: brightness(1.2); /* Petit effet de surbrillance au survol */
+}
+
+.draggable-group:active {
+    cursor: grabbing;
+}
+
+/* =============================================
    SECTIONS - Common
    ============================================= */
 .section-header {
@@ -1225,3 +1462,5 @@ body {
 body.loaded {
     opacity: 1; /* Visible quand le JS est prêt */
 }
+
+
