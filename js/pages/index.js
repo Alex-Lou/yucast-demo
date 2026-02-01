@@ -11,66 +11,81 @@ const EMAILJS_CONFIG = {
 };
 
 // =============================================
-// FEATURES DATA
+// FEATURES DATA (avec clés i18n)
 // =============================================
 const featuresData = [
     {
         icon: '🌊',
-        title: 'Real-Time Flow Visualization',
-        desc: 'Watch your data flow through topics and partitions in real-time with beautiful, animated diagrams.'
+        titleKey: 'feature_1_title',
+        descKey: 'feature_1_desc'
     },
     {
         icon: '🔍',
-        title: 'Multi-Cluster Management',
-        desc: 'Connect and monitor multiple Kafka clusters from a single, unified dashboard.'
+        titleKey: 'feature_2_title',
+        descKey: 'feature_2_desc'
     },
     {
         icon: '🧹',
-        title: 'Orphan Cleanup',
-        desc: 'Automatically detect and clean up unused topics and stale connections to keep your cluster healthy.'
+        titleKey: 'feature_3_title',
+        descKey: 'feature_3_desc'
     },
     {
         icon: '📊',
-        title: 'Live Metrics',
-        desc: 'Real-time metrics broadcasting via WebSocket. Throughput, lag, partition health — all at a glance.'
+        titleKey: 'feature_4_title',
+        descKey: 'feature_4_desc'
     },
     {
         icon: '🎨',
-        title: 'Visual Status System',
-        desc: 'Intuitive color-coded status indicators with smooth animations show cluster health instantly.'
+        titleKey: 'feature_5_title',
+        descKey: 'feature_5_desc'
     },
     {
         icon: '⚡',
-        title: 'Blazing Fast',
-        desc: 'Built with performance in mind. Handles thousands of topics without breaking a sweat.'
+        titleKey: 'feature_6_title',
+        descKey: 'feature_6_desc'
     }
 ];
 
 // =============================================
-// ARCHITECTURE DATA
+// ARCHITECTURE DATA (avec clés i18n)
 // =============================================
 const architectureData = [
     {
-        title: "Backend Stack",
+        titleKey: "arch_backend_title",
         mainIcon: "☕",
         iconClass: "ARCH_ICON_BACKEND",
         items: [
-            { abbr: "SB", name: "Spring Boot 3.2", desc: "Java 21 • Reactive WebFlux", iconClass: "STACK_ICON_SB" },
-            { abbr: "K", name: "Apache Kafka", desc: "Admin Client • Streams API", iconClass: "STACK_ICON_K" },
-            { abbr: "WS", name: "WebSocket", desc: "STOMP • Real-time metrics", iconClass: "STACK_ICON_WS" }
+            { abbr: "SB", nameKey: "arch_springboot_name", descKey: "arch_springboot_desc", iconClass: "STACK_ICON_SB" },
+            { abbr: "K", nameKey: "arch_kafka_name", descKey: "arch_kafka_desc", iconClass: "STACK_ICON_K" },
+            { abbr: "WS", nameKey: "arch_websocket_name", descKey: "arch_websocket_desc", iconClass: "STACK_ICON_WS" }
         ]
     },
     {
-        title: "Frontend Stack",
+        titleKey: "arch_frontend_title",
         mainIcon: "⚛️",
         iconClass: "ARCH_ICON_FRONTEND",
         items: [
-            { abbr: "R", name: "React 18", desc: "Hooks • Context API", iconClass: "STACK_ICON_R" },
-            { abbr: "RF", name: "React Flow", desc: "Interactive node diagrams", iconClass: "STACK_ICON_RF" },
-            { abbr: "TW", name: "Tailwind CSS", desc: "Utility-first styling", iconClass: "STACK_ICON_TW" }
+            { abbr: "R", nameKey: "arch_react_name", descKey: "arch_react_desc", iconClass: "STACK_ICON_R" },
+            { abbr: "RF", nameKey: "arch_reactflow_name", descKey: "arch_reactflow_desc", iconClass: "STACK_ICON_RF" },
+            { abbr: "TW", nameKey: "arch_tailwind_name", descKey: "arch_tailwind_desc", iconClass: "STACK_ICON_TW" }
         ]
     }
 ];
+
+// =============================================
+// TRANSLATION HELPER
+// =============================================
+
+/**
+ * Get translation for a key
+ */
+function getTranslation(key) {
+    const lang = localStorage.getItem('selectedLang') || 'en';
+    if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
+        return translations[lang][key];
+    }
+    return key;
+}
 
 // =============================================
 // RENDER FUNCTIONS
@@ -90,8 +105,8 @@ function renderFeatures() {
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span class="text-2xl">${feature.icon}</span>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3 tracking-tight">${feature.title}</h3>
-                <p class="text-gray-400 leading-relaxed text-sm">${feature.desc}</p>
+                <h3 class="text-xl font-bold text-white mb-3 tracking-tight" data-i18n="${feature.titleKey}">${getTranslation(feature.titleKey)}</h3>
+                <p class="text-gray-400 leading-relaxed text-sm" data-i18n="${feature.descKey}">${getTranslation(feature.descKey)}</p>
             </div>
         </div>
     `).join('');
@@ -121,7 +136,7 @@ function renderArchitecture() {
                 <span class="${iconClasses[stack.iconClass]}">
                     ${stack.mainIcon}
                 </span>
-                ${stack.title}
+                <span data-i18n="${stack.titleKey}">${getTranslation(stack.titleKey)}</span>
             </h3>
             <div class="space-y-4">
                 ${stack.items.map(item => `
@@ -130,8 +145,8 @@ function renderArchitecture() {
                             ${item.abbr}
                         </div>
                         <div>
-                            <div class="font-semibold text-white text-sm">${item.name}</div>
-                            <div class="text-xs text-gray-500 mt-0.5">${item.desc}</div>
+                            <div class="font-semibold text-white text-sm" data-i18n="${item.nameKey}">${getTranslation(item.nameKey)}</div>
+                            <div class="text-xs text-gray-500 mt-0.5" data-i18n="${item.descKey}">${getTranslation(item.descKey)}</div>
                         </div>
                     </div>
                 `).join('')}
@@ -186,12 +201,12 @@ async function handleFormSubmit(e) {
             form
         );
 
-        showToast('Message sent successfully!', 'success');
+        showToast(getTranslation('toast_success'), 'success');
         form.reset();
 
     } catch (error) {
         console.error('EmailJS Error:', error);
-        showToast('Failed to send message. Please try again.', 'error');
+        showToast(getTranslation('toast_error'), 'error');
 
     } finally {
         if (submitBtn) submitBtn.disabled = false;
@@ -265,7 +280,6 @@ function initIndexPage() {
     initEmailJS();
     setupContactForm();
     setupContactReveal();
-
 }
 
 // Run on DOM ready
