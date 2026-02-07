@@ -54,7 +54,7 @@ yucast/
 │       ├── engine.js       # Visualization engine
 │       └── templates.js    # Visualization templates
 │
-├── · gitignore             # Git ignore file
+├── .gitignore              # Git ignore file
 ├── package.json            # Project dependencies
 └── package-lock.json       # Dependency lock file
 ```
