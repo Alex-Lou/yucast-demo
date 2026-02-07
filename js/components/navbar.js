@@ -1,10 +1,3 @@
-// js/components/navbar.js
-// Generates the navigation bar component
-
-/**
- * @param {string} activePage
- * @param {string} basePath
- */
 function renderNavbar(activePage = 'index', basePath = '') {
     const path = basePath ? (basePath.endsWith('/') ? basePath : basePath + '/') : '';
 

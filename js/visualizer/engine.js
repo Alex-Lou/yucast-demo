@@ -1,7 +1,4 @@
-// js/visualizer/engine.js
-
 const VisualizerEngine = {
-    // --- ÉTAT DU SYSTÈME ---
     svg: null,
     connectionsLayer: null,
     particlesLayer: null,
@@ -11,58 +8,45 @@ const VisualizerEngine = {
     selectedElement: null,
     offset: { x: 0, y: 0 },
     
-    // État du dessin de lien
     isDrawing: false,
     drawingSourceId: null,
     drawingStartPos: { x: 0, y: 0 },
     
     edges: [],
     
-    // Config & Engagement
     createdNodesCount: 0,
     engagementTimer: null,
     hasTriggeredEngagement: false,
     
-    // UX Hint ("move me")
     hasMovedInitialProducer: false,
     
-    // Modal State
     pendingType: null,
     pendingSourceId: null,
 
-    // ============================================================
-    // 1. INITIALISATION
-    // ============================================================
     init: function(containerId) {
         const container = document.getElementById(containerId);
         if (!container || typeof VisualizerTemplates === 'undefined') return;
 
-        // 1. Injecter le HTML depuis le template
         container.style.position = 'relative';
         container.style.backgroundColor = '#0d0d12'; 
         container.style.overflow = 'hidden';
         container.innerHTML = VisualizerTemplates.getDemoHTML();
 
-        // 2. Récupérer les références DOM
         this.svg = document.getElementById('interactive-svg');
         this.connectionsLayer = document.getElementById('connections-layer');
         this.particlesLayer = document.getElementById('particles-layer');
         this.nodesLayer = document.getElementById('nodes-layer');
         this.tempPath = document.getElementById('temp-connection');
 
-        // 3. Reset des états
         this.hasMovedInitialProducer = false;
         this.edges = [
             { id: 'e1', source: 'node-prod-1', target: 'node-cluster' },
             { id: 'e2', source: 'node-cluster', target: 'node-cons-1' }
         ];
 
-        // 4. Lancer les listeners et boucles
         this.setupEvents();
         this.setupEngagement(container);
         
-        // --- FIX : INITIALISATION FORCÉE DES TRANSFORMATIONS ---
-        // Pour que les liens s'affichent sans avoir besoin de bouger la souris
         const groups = this.nodesLayer.querySelectorAll('.draggable-group');
         groups.forEach(group => {
             if (group.transform.baseVal.length === 0) {
@@ -72,17 +56,12 @@ const VisualizerEngine = {
             }
         });
 
-        // 5. Premier rendu immédiat + Boucle de simulation
-        // Petit délai pour s'assurer que le DOM SVG est prêt
         setTimeout(() => this.updateConnections(), 50);
         
         this.updateRandomMetrics();
         setInterval(() => this.updateRandomMetrics(), 2000);
     },
 
-    // ============================================================
-    // 2. LOGIQUE SOURIS (DRAG + DRAW + HINT)
-    // ============================================================
     setupEvents: function() {
         this.svg.addEventListener('mousedown', (evt) => this.handleMouseDown(evt));
         this.svg.addEventListener('mousemove', (evt) => this.handleMouseMove(evt));
@@ -103,7 +82,6 @@ const VisualizerEngine = {
     },
 
     handleMouseDown: function(evt) {
-        // A. DESSINER UN LIEN (Clic sur poignée)
         if (evt.target.classList.contains('handle-source')) {
             evt.stopPropagation();
             this.isDrawing = true;
@@ -112,13 +90,10 @@ const VisualizerEngine = {
             return;
         }
 
-        // B. DEPLACER UN NOEUD (Clic sur groupe)
         const group = evt.target.closest('.draggable-group');
-        // On ignore si on clique sur le bouton "+"
         if (group && !evt.target.closest('.add-btn')) {
             this.selectedElement = group;
             
-            // Initialisation de la transformation si absente
             let transforms = this.selectedElement.transform.baseVal;
             if (transforms.length === 0 || transforms.getItem(0).type !== SVGTransform.SVG_TRANSFORM_TRANSLATE) {
                 const translate = this.svg.createSVGTransform();
@@ -129,11 +104,9 @@ const VisualizerEngine = {
             let transform = transforms.getItem(0);
             let mPos = this.getMousePosition(evt);
             
-            // Calcul de l'offset pour que le noeud ne "saute" pas sous la souris
             this.offset.x = mPos.x - transform.matrix.e;
             this.offset.y = mPos.y - transform.matrix.f;
             
-            // Met l'élément au premier plan visuel
             this.nodesLayer.appendChild(this.selectedElement); 
         }
     },
@@ -141,7 +114,6 @@ const VisualizerEngine = {
     handleMouseMove: function(evt) {
         const mPos = this.getMousePosition(evt);
 
-        // A. MODE DESSIN
         if (this.isDrawing) {
             const curve = 50;
             const d = `M ${this.drawingStartPos.x} ${this.drawingStartPos.y} C ${this.drawingStartPos.x + curve} ${this.drawingStartPos.y}, ${mPos.x - curve} ${mPos.y}, ${mPos.x} ${mPos.y}`;
@@ -150,11 +122,9 @@ const VisualizerEngine = {
             return;
         }
 
-        // B. MODE DEPLACEMENT
         if (this.selectedElement) {
             evt.preventDefault();
             
-            // --- GESTION DU HINT "move me" ---
             if (!this.hasMovedInitialProducer && this.selectedElement.id === 'node-prod-1') {
                 const hintLabel = document.getElementById('move-hint');
                 if (hintLabel) {
@@ -162,7 +132,6 @@ const VisualizerEngine = {
                     this.hasMovedInitialProducer = true;
                 }
             }
-            // --------------------------------
 
             let transform = this.selectedElement.transform.baseVal.getItem(0);
             transform.setTranslate(mPos.x - this.offset.x, mPos.y - this.offset.y);
@@ -171,17 +140,14 @@ const VisualizerEngine = {
     },
 
     handleMouseUp: function(evt) {
-        // Fin du dessin de lien
         if (this.isDrawing) {
             this.isDrawing = false;
             this.tempPath.style.display = 'none';
             this.tempPath.setAttribute('d', '');
 
             const targetEl = evt.target;
-            // Vérifier si on a relâché sur une cible valide
             if (targetEl.classList.contains('handle-target')) {
                 const targetId = targetEl.getAttribute('data-id');
-                // Empêcher l'auto-connexion
                 if (this.drawingSourceId !== targetId) {
                     const exists = this.edges.find(e => e.source === this.drawingSourceId && e.target === targetId);
                     if (!exists) {
@@ -195,9 +161,6 @@ const VisualizerEngine = {
         this.selectedElement = null;
     },
 
-    // ============================================================
-    // 3. GESTION DES LIENS (LOGIQUE & RENDU)
-    // ============================================================
     getHandlePosition: function(nodeId, type) {
         const node = document.getElementById(nodeId);
         if(!node) return { x:0, y:0 };
@@ -222,7 +185,6 @@ const VisualizerEngine = {
             const start = this.getHandlePosition(edge.source, 'source');
             const end = this.getHandlePosition(edge.target, 'target');
             
-            // Si coordonnées invalides, on ignore
             if((start.x === 0 && start.y === 0) || (end.x === 0 && end.y === 0)) return;
             
             let type = edge.source.includes('prod') ? 'producer' : 'consumer';
@@ -261,9 +223,6 @@ const VisualizerEngine = {
         this.particlesLayer.appendChild(circle);
     },
 
-    // ============================================================
-    // 4. MODAL & DEPLOIEMENT
-    // ============================================================
     openDuplicateModal: function(sourceId, type, evt) {
         if (evt && typeof evt.stopPropagation === 'function') evt.stopPropagation();
         this.pendingSourceId = sourceId;
@@ -299,19 +258,15 @@ const VisualizerEngine = {
         const clone = sourceNode.cloneNode(true);
         clone.id = newId;
 
-        // Customization du clone
         const textElement = clone.querySelector('text[font-weight="bold"]');
         if(textElement) textElement.textContent = name;
         clone.setAttribute('data-ram', ram);
         
-        // Mise à jour des IDs des poignées
         clone.querySelectorAll('.connector-handle').forEach(handle => handle.setAttribute('data-id', newId));
         
-        // Mise à jour du bouton +
         const btn = clone.querySelector('.add-btn');
         if(btn) btn.setAttribute('onclick', `VisualizerEngine.openDuplicateModal('${newId}', '${this.pendingType}')`);
 
-        // Positionnement décalé
         const currentTransform = sourceNode.transform.baseVal.length > 0 ? sourceNode.transform.baseVal.getItem(0) : { matrix: { e: 0, f: 0 } };
         const newTranslate = this.svg.createSVGTransform();
         const offsetX = (Math.random() * 80) - 40;
@@ -323,19 +278,13 @@ const VisualizerEngine = {
         this.nodesLayer.appendChild(clone);
         this.closeModal();
 
-        // Check engagement trigger (Au 4ème élément créé)
         this.createdNodesCount++;
         if (this.createdNodesCount >= 4) {
             this.triggerEngagement();
         }
     },
 
-    // ============================================================
-    // 5. ENGAGEMENT / ANIMATION
-    // ============================================================
     setupEngagement: function(container) {
-        // Safari/iOS anciens peuvent ne pas supporter IntersectionObserver.
-        // Dans ce cas on degrade gracieusement (pas de crash => page accessible).
         if (typeof IntersectionObserver === 'undefined') {
             if (!this.hasTriggeredEngagement && !this.engagementTimer) {
                 this.engagementTimer = setTimeout(() => this.triggerEngagement(), 60000);
@@ -347,7 +296,7 @@ const VisualizerEngine = {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     if (!this.hasTriggeredEngagement && !this.engagementTimer) {
-                        this.engagementTimer = setTimeout(() => this.triggerEngagement(), 60000); // 1 min timer
+                        this.engagementTimer = setTimeout(() => this.triggerEngagement(), 60000);
                     }
                 } else {
                     if (this.engagementTimer) {
@@ -369,11 +318,9 @@ const VisualizerEngine = {
         
         if(!layer || !msg) return;
 
-        // Phase 1
         msg.innerHTML = "Pretty smooth, isn't it? <br><span style='font-size:1rem; font-weight:400; opacity:0.7; display:block; margin-top:10px;'>Seamless visualization in real-time.</span>";
         layer.classList.add('active');
 
-        // Phase 2
         setTimeout(() => {
             msg.style.opacity = '0';
             msg.style.transform = 'translateY(-10px)';
@@ -384,17 +331,12 @@ const VisualizerEngine = {
             }, 400);
         }, 3000);
 
-        // Fin
         setTimeout(() => { 
             layer.classList.remove('active'); 
         }, 6500);
     },
 
-    // ============================================================
-    // 6. METRIQUES SIMULÉES
-    // ============================================================
     updateRandomMetrics: function() {
-        // Producers
         document.querySelectorAll('.producer-node').forEach(node => {
             const ram = node.getAttribute('data-ram') || '2GB';
             let mult = ram === '8GB' ? 2.5 : (ram === '32GB' ? 6 : 1);
@@ -403,7 +345,6 @@ const VisualizerEngine = {
             if(metric) metric.textContent = `${val.toLocaleString()} msg/s`;
         });
 
-        // Consumers
         document.querySelectorAll('.consumer-node').forEach(node => {
             const ram = node.getAttribute('data-ram') || '2GB';
             let reducer = ram === '8GB' ? 30 : (ram === '32GB' ? 60 : 0);
@@ -415,12 +356,10 @@ const VisualizerEngine = {
             }
         });
 
-        // Cluster
         const cpuEl = document.querySelector('.metric-cpu');
         if(cpuEl) cpuEl.textContent = Math.min(99, 10 + (this.edges.length * 3));
     }
 };
 
-// Global helpers for HTML access
 window.closeModal = () => VisualizerEngine.closeModal();
 window.deployResource = () => VisualizerEngine.deployResource();

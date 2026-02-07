@@ -1,14 +1,8 @@
-// js/core/polyfills.js
-// Minimal polyfills to keep the landing page working on older Safari/iOS WebViews.
-// Keep this file ES5-compatible.
-
 (function () {
-    // NodeList.forEach (Safari < 10.1)
     if (typeof window !== 'undefined' && window.NodeList && !NodeList.prototype.forEach) {
         NodeList.prototype.forEach = Array.prototype.forEach;
     }
 
-    // Element.matches / Element.closest (Safari < 9)
     if (typeof window !== 'undefined' && window.Element) {
         var proto = Element.prototype;
 
@@ -37,7 +31,6 @@
         }
     }
 
-    // requestAnimationFrame fallback (very old browsers)
     if (typeof window !== 'undefined' && !window.requestAnimationFrame) {
         window.requestAnimationFrame = function (cb) {
             return setTimeout(cb, 16);

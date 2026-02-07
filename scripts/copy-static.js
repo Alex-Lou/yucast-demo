@@ -1,7 +1,3 @@
-// scripts/copy-static.js
-// Ensure static assets referenced by classic <script src="..."> tags exist in dist/.
-// Vite won't bundle/copy non-module scripts by default.
-
 import { cp, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';

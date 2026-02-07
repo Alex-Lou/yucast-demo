@@ -1,5 +1,3 @@
-// js/visualizer/templates.js
-
 const VisualizerTemplates = {
     getDemoHTML: () => `
         <div class="demo-test-label">Test me</div>

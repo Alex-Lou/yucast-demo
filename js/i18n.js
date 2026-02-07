@@ -1,33 +1,27 @@
 const translations = {
     en: {
-        // Navigation
         nav_features: "Features",
         nav_schema: "Schema",
         nav_arch: "Architecture",
         nav_contact: "Contact",
         
-        // Hero
         hero_title: "Visualize Your",
         hero_title_span: "Kafka Flows",
         hero_subtitle: "The modern way to monitor, manage, and understand your Kafka infrastructure. Beautiful visualizations, real-time insights, zero complexity.",
         status_version: "v2.0 — Now with real-time metrics",
         
-        // CTAs
         cta_start: "Get Started",
         cta_touch: "Get in Touch",
         cta_demo: "Schedule a Demo",
         
-        // Features Section
         features_title: "Everything you need to",
         features_title_span: "master Kafka",
         features_subtitle: "Powerful features designed for developers who want clarity and control over their event streams.",
         
-        // Architecture Section
         arch_title: "Modern",
         arch_title_span: "Architecture",
         arch_subtitle: "Built with industry-standard technologies for reliability and performance.",
         
-        // Contact Section
         contact_title: "Get in",
         contact_title_span: "Touch",
         form_name: "Your Name",
@@ -35,7 +29,6 @@ const translations = {
         form_message: "Your Message...",
         form_submit: "Send Message",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Built with ☕ and ❤️ by Cyber Wuruhi.",
         footer_privacy: "Privacy",
         footer_terms: "Terms",
@@ -45,7 +38,6 @@ const translations = {
         demo_cluster_info: "3 brokers • 12 topics",
         demo_active: "● Active",
 
-        // Features
         feature_1_title: "Real-Time Flow Visualization",
         feature_1_desc: "Watch your data flow through topics and partitions in real-time with beautiful, animated diagrams.",
         feature_2_title: "Multi-Cluster Management",
@@ -72,7 +64,6 @@ const translations = {
         feature_6_title: "Blazing Fast",
         feature_6_desc: "Built with performance in mind. Handles thousands of topics without breaking a sweat.",
 
-        // Architecture
         arch_backend_title: "Backend Stack",
         arch_frontend_title: "Frontend Stack",
         arch_springboot_name: "Spring Boot 3.2",
@@ -88,41 +79,34 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Utility-first styling",
 
-        // Toast messages
         toast_success: "Message sent successfully!",
         toast_error: "Failed to send message. Please try again.",
 
     },
     
     fr: {
-        // Navigation
         nav_features: "Fonctionnalités",
         nav_schema: "Schéma",
         nav_arch: "Architecture",
         nav_contact: "Contact",
         
-        // Hero
         hero_title: "Visualisez vos",
         hero_title_span: "Flux Kafka",
         hero_subtitle: "La façon moderne de surveiller, gérer et comprendre votre infrastructure Kafka. Visualisations magnifiques, infos en temps réel, zéro complexité.",
         status_version: "v2.0 — Maintenant avec métriques temps réel",
         
-        // CTAs
         cta_start: "Commencer",
         cta_touch: "Nous Contacter",
         cta_demo: "Planifier une Démo",
         
-        // Features Section
         features_title: "Tout ce qu'il vous faut pour",
         features_title_span: "maîtriser Kafka",
         features_subtitle: "Des fonctionnalités puissantes conçues pour les développeurs qui veulent clarté et contrôle sur leurs flux d'événements.",
         
-        // Architecture Section
         arch_title: "Architecture",
         arch_title_span: "Moderne",
         arch_subtitle: "Construit avec des technologies standards de l'industrie pour la fiabilité et la performance.",
         
-        // Contact Section
         contact_title: "Contactez",
         contact_title_span: "-nous",
         form_name: "Votre Nom",
@@ -130,7 +114,6 @@ const translations = {
         form_message: "Votre Message...",
         form_submit: "Envoyer",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Fait avec ☕ et ❤️ par Cyber Wuruhi.",
         footer_privacy: "Confidentialité",
         footer_terms: "Conditions",
@@ -140,7 +123,6 @@ const translations = {
         demo_cluster_info: "3 brokers • 12 topics",
         demo_active: "● Actif",
 
-        // Features
         feature_1_title: "Visualisation en Temps Réel",
         feature_1_desc: "Observez vos données circuler à travers les topics et partitions en temps réel avec de magnifiques diagrammes animés.",
         feature_2_title: "Gestion Multi-Clusters",
@@ -167,7 +149,6 @@ const translations = {
         feature_6_title: "Ultra Rapide",
         feature_6_desc: "Conçu pour la performance. Gère des milliers de topics sans sourciller.",
 
-        // Architecture
         arch_backend_title: "Stack Backend",
         arch_frontend_title: "Stack Frontend",
         arch_springboot_name: "Spring Boot 3.2",
@@ -183,41 +164,34 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Styling utility-first",
 
-        // Toast messages
         toast_success: "Message envoyé avec succès !",
         toast_error: "Échec de l'envoi. Veuillez réessayer.",
 
     },
     
     es: {
-        // Navigation
         nav_features: "Características",
         nav_schema: "Esquema",
         nav_arch: "Arquitectura",
         nav_contact: "Contacto",
         
-        // Hero
         hero_title: "Visualiza tus",
         hero_title_span: "Flujos Kafka",
         hero_subtitle: "La forma moderna de monitorear, gestionar y comprender tu infraestructura Kafka. Visualizaciones hermosas, información en tiempo real, cero complejidad.",
         status_version: "v2.0 — Ahora con métricas en tiempo real",
         
-        // CTAs
         cta_start: "Comenzar",
         cta_touch: "Contáctanos",
         cta_demo: "Programar Demo",
         
-        // Features Section
         features_title: "Todo lo que necesitas para",
         features_title_span: "dominar Kafka",
         features_subtitle: "Funciones potentes diseñadas para desarrolladores que quieren claridad y control sobre sus flujos de eventos.",
         
-        // Architecture Section
         arch_title: "Arquitectura",
         arch_title_span: "Moderna",
         arch_subtitle: "Construido con tecnologías estándar de la industria para confiabilidad y rendimiento.",
         
-        // Contact Section
         contact_title: "Ponte en",
         contact_title_span: "Contacto",
         form_name: "Tu Nombre",
@@ -225,7 +199,6 @@ const translations = {
         form_message: "Tu Mensaje...",
         form_submit: "Enviar Mensaje",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Hecho con ☕ y ❤️ por Cyber Wuruhi.",
         footer_privacy: "Privacidad",
         footer_terms: "Términos",
@@ -235,7 +208,6 @@ const translations = {
         demo_cluster_info: "3 brokers • 12 topics",
         demo_active: "● Activo",
 
-        //Features
         feature_1_title: "Visualización en Tiempo Real",
         feature_1_desc: "Observa tus datos fluir a través de topics y particiones en tiempo real con hermosos diagramas animados.",
         feature_2_title: "Gestión Multi-Cluster",
@@ -262,7 +234,6 @@ const translations = {
         feature_6_title: "Ultra Rápido",
         feature_6_desc: "Construido pensando en el rendimiento. Maneja miles de topics sin despeinarse.",
 
-        // Architecture
         arch_backend_title: "Stack Backend",
         arch_frontend_title: "Stack Frontend",
         arch_springboot_name: "Spring Boot 3.2",
@@ -278,40 +249,33 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Estilos utility-first",
 
-        // Toast messages
         toast_success: "¡Mensaje enviado con éxito!",
         toast_error: "Error al enviar. Por favor, inténtalo de nuevo.",
     },
     
     it: {
-        // Navigation
         nav_features: "Funzionalità",
         nav_schema: "Schema",
         nav_arch: "Architettura",
         nav_contact: "Contatto",
         
-        // Hero
         hero_title: "Visualizza i tuoi",
         hero_title_span: "Flussi Kafka",
         hero_subtitle: "Il modo moderno per monitorare, gestire e comprendere la tua infrastruttura Kafka. Visualizzazioni eleganti, informazioni in tempo reale, zero complessità.",
         status_version: "v2.0 — Ora con metriche in tempo reale",
         
-        // CTAs
         cta_start: "Inizia",
         cta_touch: "Contattaci",
         cta_demo: "Prenota una Demo",
         
-        // Features Section
         features_title: "Tutto ciò che serve per",
         features_title_span: "padroneggiare Kafka",
         features_subtitle: "Funzionalità potenti progettate per sviluppatori che vogliono chiarezza e controllo sui loro flussi di eventi.",
         
-        // Architecture Section
         arch_title: "Architettura",
         arch_title_span: "Moderna",
         arch_subtitle: "Costruito con tecnologie standard del settore per affidabilità e prestazioni.",
         
-        // Contact Section
         contact_title: "Mettiti in",
         contact_title_span: "Contatto",
         form_name: "Il tuo Nome",
@@ -319,7 +283,6 @@ const translations = {
         form_message: "Il tuo Messaggio...",
         form_submit: "Invia Messaggio",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Fatto con ☕ e ❤️ da Cyber Wuruhi.",
         footer_privacy: "Privacy",
         footer_terms: "Termini",
@@ -329,7 +292,6 @@ const translations = {
         demo_cluster_info: "3 broker • 12 topic",
         demo_active: "● Attivo",
 
-        // Features
         feature_1_title: "Visualizzazione in Tempo Reale",
         feature_1_desc: "Osserva i tuoi dati fluire attraverso topic e partizioni in tempo reale con bellissimi diagrammi animati.",
         feature_2_title: "Gestione Multi-Cluster",
@@ -356,7 +318,6 @@ const translations = {
         feature_6_title: "Ultra Veloce",
         feature_6_desc: "Costruito pensando alle prestazioni. Gestisce migliaia di topic senza problemi.",
 
-        // Architecture
         arch_backend_title: "Stack Backend",
         arch_frontend_title: "Stack Frontend",
         arch_springboot_name: "Spring Boot 3.2",
@@ -372,40 +333,33 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Styling utility-first",
 
-        // Toast messages
         toast_success: "Messaggio inviato con successo!",
         toast_error: "Invio fallito. Riprova.",
     },
     
     pt: {
-        // Navigation
         nav_features: "Recursos",
         nav_schema: "Esquema",
         nav_arch: "Arquitetura",
         nav_contact: "Contato",
         
-        // Hero
         hero_title: "Visualize seus",
         hero_title_span: "Fluxos Kafka",
         hero_subtitle: "A forma moderna de monitorar, gerenciar e entender sua infraestrutura Kafka. Visualizações bonitas, insights em tempo real, zero complexidade.",
         status_version: "v2.0 — Agora com métricas em tempo real",
         
-        // CTAs
         cta_start: "Começar",
         cta_touch: "Entre em Contato",
         cta_demo: "Agendar Demo",
         
-        // Features Section
         features_title: "Tudo que você precisa para",
         features_title_span: "dominar Kafka",
         features_subtitle: "Recursos poderosos projetados para desenvolvedores que querem clareza e controle sobre seus fluxos de eventos.",
         
-        // Architecture Section
         arch_title: "Arquitetura",
         arch_title_span: "Moderna",
         arch_subtitle: "Construído com tecnologias padrão da indústria para confiabilidade e performance.",
         
-        // Contact Section
         contact_title: "Entre em",
         contact_title_span: "Contato",
         form_name: "Seu Nome",
@@ -413,7 +367,6 @@ const translations = {
         form_message: "Sua Mensagem...",
         form_submit: "Enviar Mensagem",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Feito com ☕ e ❤️ por Cyber Wuruhi.",
         footer_privacy: "Privacidade",
         footer_terms: "Termos",
@@ -423,7 +376,6 @@ const translations = {
         demo_cluster_info: "3 brokers • 12 tópicos",
         demo_active: "● Ativo",
 
-        // Features
         feature_1_title: "Visualização em Tempo Real",
         feature_1_desc: "Observe seus dados fluírem através de tópicos e partições em tempo real com belos diagramas animados.",
         feature_2_title: "Gestão Multi-Cluster",
@@ -451,7 +403,6 @@ const translations = {
         feature_6_title: "Ultra Rápido",
         feature_6_desc: "Construído pensando em performance. Lida com milhares de tópicos sem esforço.",
 
-        // Architecture
         arch_backend_title: "Stack Backend",
         arch_frontend_title: "Stack Frontend",
         arch_springboot_name: "Spring Boot 3.2",
@@ -467,41 +418,34 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Estilização utility-first",
 
-        // Toast messages
         toast_success: "Mensagem enviada com sucesso!",
         toast_error: "Falha no envio. Tente novamente.",
 
     },
     
     de: {
-        // Navigation
         nav_features: "Funktionen",
         nav_schema: "Schema",
         nav_arch: "Architektur",
         nav_contact: "Kontakt",
         
-        // Hero
         hero_title: "Visualisieren Sie Ihre",
         hero_title_span: "Kafka-Flows",
         hero_subtitle: "Die moderne Art, Ihre Kafka-Infrastruktur zu überwachen, zu verwalten und zu verstehen. Schöne Visualisierungen, Echtzeit-Einblicke, keine Komplexität.",
         status_version: "v2.0 — Jetzt mit Echtzeit-Metriken",
         
-        // CTAs
         cta_start: "Loslegen",
         cta_touch: "Kontakt aufnehmen",
         cta_demo: "Demo vereinbaren",
         
-        // Features Section
         features_title: "Alles was Sie brauchen um",
         features_title_span: "Kafka zu meistern",
         features_subtitle: "Leistungsstarke Funktionen für Entwickler, die Klarheit und Kontrolle über ihre Event-Streams wollen.",
         
-        // Architecture Section
         arch_title: "Moderne",
         arch_title_span: "Architektur",
         arch_subtitle: "Gebaut mit branchenüblichen Technologien für Zuverlässigkeit und Leistung.",
         
-        // Contact Section
         contact_title: "Kontakt",
         contact_title_span: "aufnehmen",
         form_name: "Ihr Name",
@@ -509,7 +453,6 @@ const translations = {
         form_message: "Ihre Nachricht...",
         form_submit: "Nachricht senden",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Gemacht mit ☕ und ❤️ von Cyber Wuruhi.",
         footer_privacy: "Datenschutz",
         footer_terms: "AGB",
@@ -519,7 +462,6 @@ const translations = {
         demo_cluster_info: "3 Broker • 12 Topics",
         demo_active: "● Aktiv",
 
-        // Features
         feature_1_title: "Echtzeit-Visualisierung",
         feature_1_desc: "Beobachten Sie Ihre Daten in Echtzeit durch Topics und Partitionen fließen mit wunderschönen, animierten Diagrammen.",
         feature_2_title: "Multi-Cluster-Verwaltung",
@@ -546,7 +488,6 @@ const translations = {
         feature_6_title: "Blitzschnell",
         feature_6_desc: "Mit Leistung im Sinn gebaut. Verarbeitet tausende Topics ohne ins Schwitzen zu kommen.",
 
-        // Architecture
         arch_backend_title: "Backend-Stack",
         arch_frontend_title: "Frontend-Stack",
         arch_springboot_name: "Spring Boot 3.2",
@@ -562,40 +503,33 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Utility-first Styling",
 
-        // Toast messages
         toast_success: "Nachricht erfolgreich gesendet!",
         toast_error: "Senden fehlgeschlagen. Bitte erneut versuchen.",
     },
     
     ru: {
-        // Navigation
         nav_features: "Возможности",
         nav_schema: "Схема",
         nav_arch: "Архитектура",
         nav_contact: "Контакты",
         
-        // Hero
         hero_title: "Визуализируйте ваши",
         hero_title_span: "Потоки Kafka",
         hero_subtitle: "Современный способ мониторинга, управления и понимания вашей инфраструктуры Kafka. Красивые визуализации, аналитика в реальном времени, никакой сложности.",
         status_version: "v2.0 — Теперь с метриками реального времени",
         
-        // CTAs
         cta_start: "Начать",
         cta_touch: "Связаться с нами",
         cta_demo: "Запланировать демо",
         
-        // Features Section
         features_title: "Всё что нужно чтобы",
         features_title_span: "освоить Kafka",
         features_subtitle: "Мощные функции для разработчиков, которые хотят ясности и контроля над потоками событий.",
         
-        // Architecture Section
         arch_title: "Современная",
         arch_title_span: "Архитектура",
         arch_subtitle: "Построено на стандартных технологиях индустрии для надёжности и производительности.",
         
-        // Contact Section
         contact_title: "Свяжитесь",
         contact_title_span: "с нами",
         form_name: "Ваше имя",
@@ -603,7 +537,6 @@ const translations = {
         form_message: "Ваше сообщение...",
         form_submit: "Отправить",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Сделано с ☕ и ❤️ Cyber Wuruhi.",
         footer_privacy: "Конфиденциальность",
         footer_terms: "Условия",
@@ -613,7 +546,6 @@ const translations = {
         demo_cluster_info: "3 брокера • 12 топиков",
         demo_active: "● Активен",
 
-        // Features
         feature_1_title: "Визуализация в Реальном Времени",
         feature_1_desc: "Наблюдайте за потоком данных через топики и партиции в реальном времени с красивыми анимированными диаграммами.",
         feature_2_title: "Управление Мульти-Кластером",
@@ -640,7 +572,6 @@ const translations = {
         feature_6_title: "Молниеносно Быстро",
         feature_6_desc: "Создано с учётом производительности. Обрабатывает тысячи топиков без усилий.",
 
-        // Architecture
         arch_backend_title: "Backend Стек",
         arch_frontend_title: "Frontend Стек",
         arch_springboot_name: "Spring Boot 3.2",
@@ -656,40 +587,33 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "Utility-first стилизация",
 
-        // Toast messages
         toast_success: "Сообщение успешно отправлено!",
         toast_error: "Ошибка отправки. Попробуйте снова.",
     },
     
     zh: {
-        // Navigation
         nav_features: "功能",
         nav_schema: "架构图",
         nav_arch: "架构",
         nav_contact: "联系我们",
         
-        // Hero
         hero_title: "可视化您的",
         hero_title_span: "Kafka 流",
         hero_subtitle: "监控、管理和理解 Kafka 基础设施的现代方式。精美的可视化、实时洞察、零复杂度。",
         status_version: "v2.0 — 现在支持实时指标",
         
-        // CTAs
         cta_start: "立即开始",
         cta_touch: "联系我们",
         cta_demo: "预约演示",
         
-        // Features Section
         features_title: "掌握 Kafka 所需的",
         features_title_span: "一切功能",
         features_subtitle: "为追求事件流清晰度和控制力的开发者设计的强大功能。",
         
-        // Architecture Section
         arch_title: "现代",
         arch_title_span: "架构",
         arch_subtitle: "采用行业标准技术构建，确保可靠性和性能。",
         
-        // Contact Section
         contact_title: "联系",
         contact_title_span: "我们",
         form_name: "您的姓名",
@@ -697,7 +621,6 @@ const translations = {
         form_message: "您的留言...",
         form_submit: "发送消息",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. 由 Cyber Wuruhi 用 ☕ 和 ❤️ 制作。",
         footer_privacy: "隐私政策",
         footer_terms: "服务条款",
@@ -708,7 +631,6 @@ const translations = {
         demo_active: "● 运行中",
 
 
-        // Features
         feature_1_title: "实时流可视化",
         feature_1_desc: "通过精美的动画图表，实时观察数据在主题和分区中的流动。",
         feature_2_title: "多集群管理",
@@ -735,7 +657,6 @@ const translations = {
         feature_6_title: "极速性能",
         feature_6_desc: "专为性能而生。轻松处理数千个主题。",
 
-        // Architecture
         arch_backend_title: "后端技术栈",
         arch_frontend_title: "前端技术栈",
         arch_springboot_name: "Spring Boot 3.2",
@@ -751,40 +672,33 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "实用优先样式",
 
-        // Toast messages
         toast_success: "消息发送成功！",
         toast_error: "发送失败，请重试。",
             },
     
     ja: {
-        // Navigation
         nav_features: "機能",
         nav_schema: "スキーマ",
         nav_arch: "アーキテクチャ",
         nav_contact: "お問い合わせ",
         
-        // Hero
         hero_title: "可視化する",
         hero_title_span: "Kafkaフロー",
         hero_subtitle: "Kafkaインフラストラクチャを監視、管理、理解するための最新の方法。美しい可視化、リアルタイムの洞察、複雑さゼロ。",
         status_version: "v2.0 — リアルタイムメトリクス対応",
         
-        // CTAs
         cta_start: "始める",
         cta_touch: "お問い合わせ",
         cta_demo: "デモを予約",
         
-        // Features Section
         features_title: "Kafkaをマスターするための",
         features_title_span: "すべての機能",
         features_subtitle: "イベントストリームの明確さとコントロールを求める開発者のために設計された強力な機能。",
         
-        // Architecture Section
         arch_title: "モダン",
         arch_title_span: "アーキテクチャ",
         arch_subtitle: "信頼性とパフォーマンスのための業界標準技術で構築。",
         
-        // Contact Section
         contact_title: "お問い",
         contact_title_span: "合わせ",
         form_name: "お名前",
@@ -792,7 +706,6 @@ const translations = {
         form_message: "メッセージ...",
         form_submit: "送信",
         
-        // Footer
         footer_copyright: "© 2026 Yucast. Cyber Wuruhiが☕と❤️で作成。",
         footer_privacy: "プライバシー",
         footer_terms: "利用規約",
@@ -802,7 +715,6 @@ const translations = {
         demo_cluster_info: "3ブローカー • 12トピック",
         demo_active: "● アクティブ",
 
-        //Features
         feature_1_title: "リアルタイムフロー可視化",
         feature_1_desc: "美しいアニメーション図で、トピックとパーティションを流れるデータをリアルタイムで観察できます。",
         feature_2_title: "マルチクラスター管理",
@@ -816,7 +728,6 @@ const translations = {
         feature_6_title: "超高速",
         feature_6_desc: "パフォーマンスを念頭に構築。数千のトピックを楽々処理。",
 
-        // Architecture
         arch_backend_title: "バックエンドスタック",
         arch_frontend_title: "フロントエンドスタック",
         arch_springboot_name: "Spring Boot 3.2",
@@ -832,7 +743,6 @@ const translations = {
         arch_tailwind_name: "Tailwind CSS",
         arch_tailwind_desc: "ユーティリティファーストスタイリング",
 
-        // Toast messages
         toast_success: "メッセージが正常に送信されました！",
         toast_error: "送信に失敗しました。もう一度お試しください。",
     }
@@ -851,9 +761,6 @@ const availableLanguages = {
 };
 
 
-// =============================================
-// HELPER FUNCTION
-// =============================================
 function getTranslation(key) {
     const currentLang = localStorage.getItem('selectedLang') || 
                         (navigator.language && navigator.language.split('-')[0]) || 
