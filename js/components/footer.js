@@ -9,7 +9,6 @@ function renderFooter() {
             <div class="[FOOTER_LINKS]">
                 <a href="#" class="[FOOTER_LINK]" data-i18n="footer_privacy">${getTranslation('footer_privacy')}</a>
                 <a href="#" class="[FOOTER_LINK]" data-i18n="footer_terms">${getTranslation('footer_terms')}</a>
-                <a href="pricing.html" class="[FOOTER_LINK]" data-i18n="nav_pricing">${getTranslation('nav_pricing')}</a>
                 <a href="index.html#contact" class="[FOOTER_LINK]" data-i18n="nav_contact">${getTranslation('nav_contact')}</a>
             </div>
         </div>

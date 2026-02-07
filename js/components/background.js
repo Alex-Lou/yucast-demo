@@ -21,11 +21,6 @@ function renderParticles(config = 'default') {
             { size: 'LG', left: '75%', top: '75%', delay: '1s' },
             { size: 'SM', left: '15%', top: '70%', delay: '1.5s' },
             { size: 'MD', left: '5%', top: '45%', delay: '1.2s' }
-        ],
-        pricing: [
-            { size: 'MD', left: '10%', top: '20%', delay: '0s' },
-            { size: 'SM', left: '80%', top: '30%', delay: '1s' },
-            { size: 'LG', left: '70%', top: '70%', delay: '2s' }
         ]
     };
 

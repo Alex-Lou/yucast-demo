@@ -16,7 +16,6 @@ Modern landing page for Yucast - Kafka Flow Visualizer.
 ```
 yucast/
 ├── index.html              # Homepage
-├── pricing.html            # Pricing page
 │
 ├── assets/
 │   └── images/
@@ -43,17 +42,19 @@ yucast/
 │   ├── styles/
 │   │   ├── shared.js       # Shared style tokens
 │   │   ├── index-styles.js # Index page tokens
-│   │   └── pricing-styles.js # Pricing page tokens
 │   │
 │   ├── pages/
-│   │   ├── index.js        # Index page logic
-│   │   └── pricing.js      # Pricing page logic
+│   │   ├── index.js        # Index page orchestration
+│   │   └── index/          # Index page modules
+│   │       ├── contact.js  # Contact form logic
+│   │       ├── data.js     # Page data & constants
+│   │       └── renderers.js # Dynamic section renderers
 │   │
 │   └── visualizer/
 │       ├── engine.js       # Visualization engine
 │       └── templates.js    # Visualization templates
 │
-├── .gitignore              # Git ignore file
+├── · gitignore             # Git ignore file
 ├── package.json            # Project dependencies
 └── package-lock.json       # Dependency lock file
 ```
