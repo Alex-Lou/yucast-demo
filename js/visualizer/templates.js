@@ -44,7 +44,7 @@ const VisualizerTemplates = {
                     <text x="100" y="195" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" style="pointer-events: none;">Producer</text>
                     <text x="100" y="215" text-anchor="middle" class="node-metric metric-throughput">0 msg/s</text>
                     <circle class="connector-handle handle-source" cx="140" cy="200" r="6" stroke="#22d3ee" data-id="node-prod-1" data-type="source" />
-                    <g class="add-btn" transform="translate(130, 160)" onclick="VisualizerEngine.openDuplicateModal('node-prod-1', 'producer')">
+                    <g class="add-btn" transform="translate(130, 160)" onclick="VisualizerEngine.openDuplicateModal('node-prod-1', 'producer', event)">
                         <circle r="10" fill="#22d3ee" stroke="none"/>
                         <path d="M-4 0 h8 M0 -4 v8" stroke="#1a1a24" stroke-width="2" stroke-linecap="round"/>
                     </g>
@@ -64,7 +64,7 @@ const VisualizerTemplates = {
                     <text x="700" y="195" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold" style="pointer-events: none;">Consumer</text>
                     <text x="700" y="215" text-anchor="middle" class="node-metric metric-lag">Lag: 0 ms</text>
                     <circle class="connector-handle handle-target" cx="660" cy="200" r="6" stroke="#22d3ee" data-id="node-cons-1" data-type="target" />
-                    <g class="add-btn" transform="translate(730, 160)" onclick="VisualizerEngine.openDuplicateModal('node-cons-1', 'consumer')">
+                    <g class="add-btn" transform="translate(730, 160)" onclick="VisualizerEngine.openDuplicateModal('node-cons-1', 'consumer', event)">
                         <circle r="10" fill="#22d3ee" stroke="none"/>
                         <path d="M-4 0 h8 M0 -4 v8" stroke="#1a1a24" stroke-width="2" stroke-linecap="round"/>
                     </g>

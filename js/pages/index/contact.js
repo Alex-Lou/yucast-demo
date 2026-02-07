@@ -1,6 +1,27 @@
 // js/pages/index/contact.js
 // Gestion du formulaire de contact et du scroll vers la section
 
+function getQueryParam(name) {
+    const query = window.location.search || '';
+    if (!query || query.length < 2) return null;
+
+    const pairs = query.substring(1).split('&');
+    for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i];
+        if (!pair) continue;
+        const eq = pair.indexOf('=');
+        const rawKey = eq >= 0 ? pair.substring(0, eq) : pair;
+        if (decodeURIComponent(rawKey) !== name) continue;
+        const rawVal = eq >= 0 ? pair.substring(eq + 1) : '';
+        try {
+            return decodeURIComponent(rawVal.replace(/\+/g, ' '));
+        } catch (e) {
+            return rawVal;
+        }
+    }
+    return null;
+}
+
 function initEmailJS() {
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_CONFIG.publicKey);
@@ -42,10 +63,10 @@ function setupContactReveal() {
     const contactSection = document.getElementById('contact');
     if (!contactSection) return;
 
-    const urlParams = new URLSearchParams(window.location.search);
     const hash = window.location.hash;
 
-    if (urlParams.get('showContact') === 'true' || hash === '#contact') {
+    const showContact = getQueryParam('showContact');
+    if (showContact === 'true' || hash === '#contact') {
         contactSection.classList.remove('hidden-section');
         contactSection.classList.add('visible');
         setTimeout(() => {

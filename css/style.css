@@ -1003,10 +1003,16 @@ select.form-input option {
 body {
     opacity: 0; /* Invisible au départ */
     transition: opacity 0.3s ease-in-out; /* Apparition douce */
+    /* Fallback: si du JS plante (Safari/old iOS), on n'affiche pas un écran noir infini. */
+    animation: body-fallback 0s linear 2s forwards;
 }
 
 body.loaded {
     opacity: 1; /* Visible quand le JS est prêt */
+    animation: none;
 }
 
+@keyframes body-fallback {
+    to { opacity: 1; }
+}
 

@@ -1,7 +1,7 @@
 // js/theme.js
 // Tailwind CSS Configuration for CDN usage
 
-tailwind.config = {
+const config = {
     theme: {
         extend: {
             colors: {
@@ -19,3 +19,10 @@ tailwind.config = {
         }
     }
 };
+
+// If Tailwind CDN fails to load (blocked/old Safari), don't crash the whole page.
+if (typeof tailwind !== 'undefined') {
+    tailwind.config = config;
+} else {
+    window.__tailwind_config = config;
+}

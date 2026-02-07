@@ -264,8 +264,8 @@ const VisualizerEngine = {
     // ============================================================
     // 4. MODAL & DEPLOIEMENT
     // ============================================================
-    openDuplicateModal: function(sourceId, type) {
-        if (event) event.stopPropagation();
+    openDuplicateModal: function(sourceId, type, evt) {
+        if (evt && typeof evt.stopPropagation === 'function') evt.stopPropagation();
         this.pendingSourceId = sourceId;
         this.pendingType = type;
         
@@ -334,6 +334,15 @@ const VisualizerEngine = {
     // 5. ENGAGEMENT / ANIMATION
     // ============================================================
     setupEngagement: function(container) {
+        // Safari/iOS anciens peuvent ne pas supporter IntersectionObserver.
+        // Dans ce cas on degrade gracieusement (pas de crash => page accessible).
+        if (typeof IntersectionObserver === 'undefined') {
+            if (!this.hasTriggeredEngagement && !this.engagementTimer) {
+                this.engagementTimer = setTimeout(() => this.triggerEngagement(), 60000);
+            }
+            return;
+        }
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
