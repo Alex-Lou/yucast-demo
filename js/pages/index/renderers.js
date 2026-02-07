@@ -1,6 +1,3 @@
-// js/pages/index/renderers.js
-// Rendu des sections dynamiques de la landing
-
 function renderFeatures() {
     const container = document.getElementById('features-grid');
     if (!container) return;

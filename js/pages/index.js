@@ -1,6 +1,3 @@
-// js/pages/index.js
-// Orchestration de la landing page (index.html)
-
 function initIndexPage() {
     try {
         injectBackground('default');
@@ -20,20 +17,15 @@ function initIndexPage() {
             try {
                 VisualizerEngine.init('demo');
             } catch (err) {
-                console.error('VisualizerEngine.init failed:', err);
             }
         }
 
         initEmailJS();
         setupContactForm();
         setupContactReveal();
-    } catch (err) {
-        console.error('initIndexPage failed:', err);
     } finally {
-        // Important: ne jamais laisser la page invisible si un script plante (Safari/iOS).
         document.body.classList.add('loaded');
     }
 }
 
 document.addEventListener('DOMContentLoaded', initIndexPage);
-Sur

@@ -1,41 +1,23 @@
-// js/styles/index-styles.js
-// Style tokens specific to index.html (homepage)
-
 const INDEX_STYLES = {
 
-    // =============================================
-    // HERO SECTION
-    // =============================================
     HERO_SECTION: "hero-section",
     HERO_CONTENT: "hero-content",
     HERO_TITLE: "hero-title animate-fade-in-up delay-100",
     HERO_TITLE_GRADIENT: "block text-gradient",
     HERO_SUBTITLE: "hero-subtitle animate-fade-in-up delay-200",
 
-    // =============================================
-    // STATUS BADGE
-    // =============================================
     STATUS_BADGE: "status-badge glass animate-fade-in-up",
     STATUS_DOT_CONTAINER: "status-dot-container",
     STATUS_DOT_PING: "status-dot-ping",
     STATUS_DOT: "status-dot",
     STATUS_TEXT: "status-text",
 
-    // =============================================
-    // CTA SECTION
-    // =============================================
     CTA_CONTAINER: "cta-container animate-fade-in-up delay-300",
 
-    // =============================================
-    // DEMO SECTION
-    // =============================================
     DEMO_CONTAINER: "demo-container",
     DEMO_BOX: "demo-box",
     DEMO_GRADIENT: "absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent",
 
-    // =============================================
-    // FEATURES SECTION
-    // =============================================
     FEATURES_SECTION: "features-section",
     FEATURES_GRID: "features-grid",
     FEATURE_CARD: "card-hover group relative p-8 rounded-2xl glass",
@@ -46,9 +28,6 @@ const INDEX_STYLES = {
     FEATURE_TITLE: "text-xl font-bold text-white mb-3 tracking-tight",
     FEATURE_DESC: "text-gray-400 leading-relaxed text-sm",
 
-    // =============================================
-    // ARCHITECTURE SECTION
-    // =============================================
     ARCHITECTURE_SECTION: "architecture-section",
     ARCHITECTURE_GRID: "architecture-grid",
     ARCH_CARD: "glass rounded-2xl p-8",
@@ -66,9 +45,6 @@ const INDEX_STYLES = {
     STACK_NAME: "font-semibold text-white text-sm",
     STACK_DESC: "text-xs text-gray-500 mt-0.5",
 
-    // =============================================
-    // CONTACT SECTION
-    // =============================================
     CONTACT_SECTION: "contact-section hidden-section",
     CONTACT_FORM_CONTAINER: "contact-form-container",
     CONTACT_FORM: "contact-form glass",
@@ -77,18 +53,15 @@ const INDEX_STYLES = {
     SUBMIT_TEXT: "",
     SUBMIT_LOADING: "hidden",
 
-    // --- AURORA BACKGROUND ---
     AURORA_CONTAINER: "aurora-container",
     AURORA_BLOB: "aurora-blob",
     BLOB_CYAN: "blob-cyan",
     BLOB_PURPLE: "blob-purple",
     BLOB_PINK: "blob-pink",
 
-    // --- DEMO SECTION ---
     DEMO_CONTAINER: "demo-container w-full max-w-5xl mx-auto px-6",
     DEMO_BOX: "demo-box",
 
-    // --- MODAL CONFIGURATION ---
     MODAL_OVERLAY: "modal-overlay hidden",
     MODAL_CONTENT: "modal-content glass",
     MODAL_HEADER: "modal-header flex justify-between items-center mb-6",
@@ -96,17 +69,14 @@ const INDEX_STYLES = {
     MODAL_BODY: "modal-body",
     MODAL_FOOTER: "modal-footer mt-6 flex justify-end gap-3",
     
-    // --- FORM ELEMENTS (MODAL) ---
     FORM_GROUP: "form-group mb-4",
     INPUT_LABEL: "text-xs uppercase tracking-wider text-gray-500 mb-1 block",
     FORM_INPUT: "form-input w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition-colors",
     GRID_2_COL: "grid grid-cols-2 gap-4",
     
-    // --- BUTTONS (MODAL) ---
     BTN_CANCEL: "px-4 py-2 rounded-lg text-sm text-gray-400 hover:bg-white/5 transition-colors",
     BTN_DEPLOY: "px-6 py-2 rounded-lg text-sm font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-600 hover:shadow-lg hover:shadow-purple-500/20 transition-all",
 
-    // --- EXISTING STYLES (Conservés pour compatibilité) ---
     HERO_SECTION: "hero-section relative min-h-screen flex items-center justify-center pt-20",
     HERO_CONTENT: "hero-content text-center z-10 max-w-4xl mx-auto px-4",
     STATUS_BADGE: "status-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8",
@@ -140,7 +110,6 @@ const INDEX_STYLES = {
     TEXT_GRADIENT: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
 };
 
-// Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = INDEX_STYLES;
 }

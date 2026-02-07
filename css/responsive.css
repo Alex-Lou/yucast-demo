@@ -1,26 +1,23 @@
-/* =============================================
-   RESPONSIVE - MOBILES (iPhone SE, 12, Pixel)
-   Max-width: 639px
-   ============================================= */
+
 @media (max-width: 639px) {
-    /* Global Spacing */
+    
     .hero-section, .features-section, .architecture-section, 
     .contact-section {
         padding-top: 3rem;
         padding-bottom: 3rem;
     }
 
-    /* Navbar : Ajustements pour petits écrans */
+    
     .navbar-container {
         padding: 1rem;
     }
     .logo-text {
-        font-size: 1.1rem; /* Réduire légèrement la taille du logo */
+        font-size: 1.1rem; 
     }
     
-    /* Hero Section : Textes trop gros sur mobile */
+    
     .hero-title {
-        font-size: 2.25rem; /* Réduit de 3rem+ à 2.25rem */
+        font-size: 2.25rem; 
         padding: 0 0.5rem;
     }
     .hero-subtitle {
@@ -29,7 +26,7 @@
         margin-bottom: 2rem;
     }
 
-    /* Boutons CTA : Pleine largeur sur mobile */
+    
     .cta-container {
         flex-direction: column;
         width: 100%;
@@ -42,59 +39,53 @@
         text-align: center;
     }
 
-    /* Demo Box (Le graphique) : Hauteur réduite */
+    
     .demo-box {
-        height: 250px; /* Évite de prendre tout l'écran vertical */
+        height: 250px; 
         margin-top: 1rem;
     }
 
-    /* Grilles : Force 1 colonne */
+    
     .features-grid, .architecture-grid {
-        grid-template-columns: 1fr; /* Une seule colonne partout */
+        grid-template-columns: 1fr; 
         gap: 1.5rem;
     }
     
-    /* Titres de section */
+    
     .section-title {
         font-size: 1.75rem;
         padding: 0 1rem;
     }
 }
 
-/* =============================================
-   RESPONSIVE - TABLETTES (iPad Mini, Air, Pro)
-   Min-width: 640px à Max-width: 1023px
-   ============================================= */
+
 @media (min-width: 640px) and (max-width: 1023px) {
-    /* Hero */
+    
     .hero-title {
         font-size: 3.5rem;
     }
 
-    /* Grilles : 2 colonnes pour tablettes */
+    
     .features-grid, .architecture-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Navbar padding */
+    
     .navbar-container {
         padding: 1rem 2rem;
     }
 }
 
-/* =============================================
-   AJUSTEMENTS SPÉCIFIQUES IPHONE PETITS (SE)
-   Max-width: 380px
-   ============================================= */
+
 @media (max-width: 380px) {
     .hero-title {
-        font-size: 1.8rem; /* Encore plus petit pour iPhone SE */
+        font-size: 1.8rem; 
     }
     .status-text {
-        font-size: 0.75rem; /* Texte de version plus petit */
+        font-size: 0.75rem; 
     }
     .cta-button {
-        padding: 0.4rem 0.8rem; /* Bouton nav plus petit */
+        padding: 0.4rem 0.8rem; 
         font-size: 0.7rem;
     }
 }

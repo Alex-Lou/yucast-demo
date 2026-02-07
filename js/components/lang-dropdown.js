@@ -1,6 +1,3 @@
-// js/components/lang-dropdown.js
-// Language dropdown component
-
 function renderLangDropdown() {
     const currentLang = localStorage.getItem('selectedLang') || 'en';
     const currentData = availableLanguages[currentLang] || availableLanguages['en'];
@@ -62,7 +59,6 @@ function updateDropdownDisplay(lang) {
     });
 }
 
-// Close dropdown when clicking outside
 document.addEventListener('click', function(event) {
     const dropdown = document.getElementById('lang-dropdown');
     if (dropdown && !dropdown.contains(event.target)) {

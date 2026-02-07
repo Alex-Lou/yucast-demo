@@ -1,6 +1,3 @@
-// js/components/footer.js
-// Footer component
-
 function renderFooter() {
     return `
     <footer class="[FOOTER]">

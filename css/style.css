@@ -1,14 +1,9 @@
-/* =============================================
-   YUCAST - Main Stylesheet
-   Version: 2.0 Clean
-   ============================================= */
+
 
 * { font-family: 'Inter', sans-serif; }
 html { scroll-behavior: smooth; }
 
-/* =============================================
-   ANIMATIONS - Keyframes
-   ============================================= */
+
 @keyframes float {
     0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
     50% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
@@ -62,9 +57,7 @@ html { scroll-behavior: smooth; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =============================================
-   ANIMATIONS - Classes
-   ============================================= */
+
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-dash { animation: dash 3s linear infinite; }
 .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; opacity: 0; }
@@ -73,7 +66,7 @@ html { scroll-behavior: smooth; }
 .animate-gradient { animation: gradient-shift 8s ease infinite; background-size: 200% 200%; }
 .animate-spin { animation: spin 1s linear infinite; }
 
-/* Animation Delays */
+
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
@@ -82,9 +75,7 @@ html { scroll-behavior: smooth; }
 .delay-700 { animation-delay: 700ms; }
 .delay-1000 { animation-delay: 1000ms; }
 
-/* =============================================
-   UTILITY CLASSES
-   ============================================= */
+
 .glass {
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(20px);
@@ -139,17 +130,13 @@ html { scroll-behavior: smooth; }
     outline: none;
 }
 
-/* =============================================
-   SCROLLBAR
-   ============================================= */
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
 
-/* =============================================
-   TOAST NOTIFICATION
-   ============================================= */
+
 .toast {
     transform: translateX(100%);
     transition: transform 0.3s ease;
@@ -159,9 +146,7 @@ html { scroll-behavior: smooth; }
     transform: translateX(0);
 }
 
-/* =============================================
-   PAGE BASE
-   ============================================= */
+
 .page-body {
     background-color: #0a0a0f;
     color: white;
@@ -169,9 +154,7 @@ html { scroll-behavior: smooth; }
     min-height: 100vh;
 }
 
-/* =============================================
-   BACKGROUND & PARTICLES
-   ============================================= */
+
 .background-container {
     position: fixed;
     inset: 0;
@@ -237,9 +220,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
 }
 
-/* =============================================
-   NAVBAR
-   ============================================= */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -340,9 +321,7 @@ html { scroll-behavior: smooth; }
     transform: scale(1.05);
 }
 
-/* =============================================
-   HERO SECTION
-   ============================================= */
+
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -496,9 +475,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.1);
 }
 
-/* =============================================
-   DEMO PLAYGROUND LABEL
-   ============================================= */
+
 .demo-test-label {
     position: absolute;
     top: 1.5rem;
@@ -522,11 +499,11 @@ html { scroll-behavior: smooth; }
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
 }
 
-/* ANIMATED AURORA BACKGROUND */
+
 .aurora-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px); /* Un peu moins de flou pour la petite boite */
+    filter: blur(80px); 
     opacity: 0.5;
     mix-blend-mode: screen;
     will-change: transform;
@@ -552,9 +529,7 @@ html { scroll-behavior: smooth; }
 @keyframes aurora-move-2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-15%, -10%) scale(1.1); } }
 @keyframes aurora-move-3 { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-5%, 15%) scale(1.3); } 100% { transform: translate(5%, -5%) scale(0.9); } }
 
-/* =============================================
-   CONFIGURATION MODAL
-   ============================================= */
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -592,49 +567,45 @@ html { scroll-behavior: smooth; }
 
 .hidden { display: none; }
 
-/* =============================================
-   CONNECTOR HANDLES
-   ============================================= */
+
 .connector-handle {
-    cursor: crosshair; /* Curseur "Cible" */
+    cursor: crosshair; 
     transition: all 0.2s ease;
     stroke: #fff;
     stroke-width: 2px;
 }
 
 .connector-handle:hover {
-    r: 8px; /* Grossit au survol */
-    fill: #fff !important; /* Devient blanc */
+    r: 8px; 
+    fill: #fff !important; 
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
 }
 
-/* On cache les boules si on ne survole pas le noeud (optionnel, ici je les laisse visibles pour la clarté) */
+
 .draggable-group:hover .connector-handle {
     opacity: 1;
 }
 
 
-/* =============================================
-   ENGAGEMENT OVERLAY
-   ============================================= */
+
 .engagement-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(13, 13, 18, 0.85); /* Fond sombre semi-transparent */
+    background: rgba(13, 13, 18, 0.85); 
     backdrop-filter: blur(8px);
-    z-index: 50; /* Au-dessus de tout le SVG */
+    z-index: 50; 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     opacity: 0;
-    pointer-events: none; /* Laisse passer les clics tant que c'est invisible */
+    pointer-events: none; 
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .engagement-overlay.active {
     opacity: 1;
-    pointer-events: auto; /* Bloque l'interaction pendant le message */
+    pointer-events: auto; 
 }
 
 .engagement-text {
@@ -655,32 +626,28 @@ html { scroll-behavior: smooth; }
     opacity: 1;
 }
 
-/* =============================================
-   FIX SELECT INPUTS (RAM DROPDOWN)
-   ============================================= */
+
 select.form-input {
-    background-color: rgba(255, 255, 255, 0.05); /* Fond du champ fermé */
+    background-color: rgba(255, 255, 255, 0.05); 
     color: white;
     cursor: pointer;
 }
 
 select.form-input option {
-    background-color: #13131f; /* Fond du menu ouvert (Dark) */
+    background-color: #13131f; 
     color: white;
     padding: 10px;
 }
 
-/* Petit ajustement pour que le modal reste bien au-dessus de tout */
+
 .modal-overlay {
     z-index: 9999 !important; 
 }
 
-/* =============================================
-   HINT LABEL ("move me")
-   ============================================= */
+
 @keyframes hint-pulse {
     0%, 100% { opacity: 0.3; transform: translateY(0); }
-    50% { opacity: 0.8; transform: translateY(-2px); } /* Plus visible et monte un peu */
+    50% { opacity: 0.8; transform: translateY(-2px); } 
 }
 
 .hint-label {
@@ -700,42 +667,36 @@ select.form-input option {
 }
 
 
-/* =============================================
-   DEMO METRICS
-   ============================================= */
+
 .node-metric {
-    font-family: 'Consolas', 'Monaco', monospace; /* Look "Data" */
+    font-family: 'Consolas', 'Monaco', monospace; 
     font-size: 10px;
-    fill: #9ca3af; /* Gris clair */
-    pointer-events: none; /* Ne gêne pas le clic */
+    fill: #9ca3af; 
+    pointer-events: none; 
     transition: fill 0.3s;
 }
 
-/* Couleurs spécifiques quand ça "chauffe" (optionnel) */
-.metric-high { fill: #f87171; } /* Rouge */
-.metric-ok { fill: #4ade80; }   /* Vert */
+
+.metric-high { fill: #f87171; } 
+.metric-ok { fill: #4ade80; }   
 
 
 
-/* =============================================
-   INTERACTIVE SCHEMA
-   ============================================= */
+
 .draggable-group {
     cursor: grab;
     transition: filter 0.3s ease;
 }
 
 .draggable-group:hover {
-    filter: brightness(1.2); /* Petit effet de surbrillance au survol */
+    filter: brightness(1.2); 
 }
 
 .draggable-group:active {
     cursor: grabbing;
 }
 
-/* =============================================
-   SECTIONS - Common
-   ============================================= */
+
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -754,9 +715,7 @@ select.form-input option {
     margin-right: auto;
 }
 
-/* =============================================
-   FEATURES SECTION
-   ============================================= */
+
 .features-section {
     padding: 6rem 1.5rem;
 }
@@ -774,9 +733,7 @@ select.form-input option {
     .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* =============================================
-   ARCHITECTURE SECTION
-   ============================================= */
+
 .architecture-section {
     padding: 3rem 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -791,9 +748,7 @@ select.form-input option {
     .architecture-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* =============================================
-   CONTACT SECTION
-   ============================================= */
+
 .contact-section {
     padding: 3rem 1.5rem;
 }
@@ -858,9 +813,7 @@ select.form-input option {
     cursor: not-allowed;
 }
 
-/* =============================================
-   FOOTER
-   ============================================= */
+
 .footer {
     padding: 3rem 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -872,9 +825,7 @@ select.form-input option {
     font-size: 0.875rem;
 }
 
-/* =============================================
-   LANGUAGE DROPDOWN
-   ============================================= */
+
 
 .lang-dropdown {
     position: relative;
@@ -997,18 +948,15 @@ select.form-input option {
     opacity: 1;
 }
 
-/* =============================================
-   PREVENTION DU FLASH BLANC (FOUC)
-   ============================================= */
+
 body {
-    opacity: 0; /* Invisible au départ */
-    transition: opacity 0.3s ease-in-out; /* Apparition douce */
-    /* Fallback: si du JS plante (Safari/old iOS), on n'affiche pas un écran noir infini. */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     animation: body-fallback 0s linear 2s forwards;
 }
 
 body.loaded {
-    opacity: 1; /* Visible quand le JS est prêt */
+    opacity: 1;
     animation: none;
 }
 

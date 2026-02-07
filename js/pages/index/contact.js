@@ -1,6 +1,3 @@
-// js/pages/index/contact.js
-// Gestion du formulaire de contact et du scroll vers la section
-
 function getQueryParam(name) {
     const query = window.location.search || '';
     if (!query || query.length < 2) return null;
@@ -50,7 +47,6 @@ async function handleFormSubmit(e) {
         showToast(getTranslation('toast_success'), 'success');
         form.reset();
     } catch (error) {
-        console.error('EmailJS Error:', error);
         showToast(getTranslation('toast_error'), 'error');
     } finally {
         if (submitBtn) submitBtn.disabled = false;

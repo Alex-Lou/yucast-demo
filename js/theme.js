@@ -1,6 +1,3 @@
-// js/theme.js
-// Tailwind CSS Configuration for CDN usage
-
 const config = {
     theme: {
         extend: {
@@ -20,7 +17,6 @@ const config = {
     }
 };
 
-// If Tailwind CDN fails to load (blocked/old Safari), don't crash the whole page.
 if (typeof tailwind !== 'undefined') {
     tailwind.config = config;
 } else {

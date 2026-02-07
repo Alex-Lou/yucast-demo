@@ -1,6 +1,3 @@
-// js/components/background.js
-// Background and particles component
-
 function renderBackground() {
     return `
     <div class="[BG_CONTAINER]">

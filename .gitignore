@@ -1,17 +1,9 @@
-# IDE
 .idea/
 .vscode/
 *.swp
-
-# Dependencies
 node_modules/
-
-# Build
 dist/
-
-# OS
+tmp-safari*.png
 .DS_Store
 Thumbs.db
-
-# Logs
 *.log

@@ -1,6 +1,3 @@
-// js/pages/index/data.js
-// Données et constantes utilisées par la landing page
-
 const EMAILJS_CONFIG = {
     publicKey: 'AlcXNClkk7JrUAF-y',
     serviceId: 'service_9nkxilk',
